@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>Dssem</RootNamespace>
     <AssemblyName>Dssem</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -46,7 +47,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code.cs" />
     <Compile Include="DSSM.cs" />
     <Compile Include="Export.cs" />
     <Compile Include="FileOperation.cs" />
@@ -58,6 +58,7 @@
     </Compile>
     <Compile Include="Instruction.cs" />
     <Compile Include="Label.cs" />
+    <Compile Include="Memory.cs" />
     <Compile Include="OpenFile.cs">
       <SubType>Form</SubType>
     </Compile>
