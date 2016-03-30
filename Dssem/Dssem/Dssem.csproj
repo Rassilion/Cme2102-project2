@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Code.cs" />
     <Compile Include="DSSM.cs" />
     <Compile Include="Export.cs" />
     <Compile Include="FileOperation.cs" />
@@ -58,6 +57,7 @@
     </Compile>
     <Compile Include="Instruction.cs" />
     <Compile Include="Label.cs" />
+    <Compile Include="Memory.cs" />
     <Compile Include="OpenFile.cs">
       <SubType>Form</SubType>
     </Compile>
