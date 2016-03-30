@@ -13,16 +13,13 @@ namespace Dssem
 {
     public partial class Form1 : Form
     {
-        Memory[] codeSegment = new Memory[16];
-        Memory[] dataSegment = new Memory[16];
-        Memory[] stackSegment = new Memory[8];
-
-
+        private DSSM dssm = new DSSM();
 
         public static string filePath;
         public Form1()
         {
             InitializeComponent();
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -44,7 +41,7 @@ namespace Dssem
         public void updateForm()
         {
             //code segment
-            foreach (Memory cell in codeSegment)
+            foreach (Memory cell in dssm.codeSegment)
             {
                 if (cell == null)
                 {
@@ -59,7 +56,7 @@ namespace Dssem
             }
 
             //data segment
-            foreach (Memory cell in dataSegment)
+            foreach (Memory cell in dssm.dataSegment)
             {
                 if (cell == null)
                 {
@@ -74,7 +71,7 @@ namespace Dssem
             }
 
             //stack segment
-            foreach (Memory cell in stackSegment)
+            foreach (Memory cell in dssm.stackSegment)
             {
                 if (cell == null)
                 {
@@ -135,20 +132,20 @@ namespace Dssem
                         }
                         else if (d_index == -1)
                         {
-                            codeSegment[c_index] = new Memory();
-                            codeSegment[c_index].i = "0";
-                            codeSegment[c_index].opcode = splited[i];
-                            codeSegment[c_index].data = splited[i + 1];
+                            dssm.codeSegment[c_index] = new Memory();
+                            dssm.codeSegment[c_index].i = "0";
+                            dssm.codeSegment[c_index].opcode = splited[i];
+                            dssm.codeSegment[c_index].data = splited[i + 1];
                             c_index++;
                         }
                     }
                     else if (splited[i].Contains(','))
                     {
                         labeltable.Items.Add(splited[i] + " " + splited[i + 1] + " " + splited[i + 2]);
-                        dataSegment[d_index] = new Memory();
-                        dataSegment[d_index].i = "0";
-                        dataSegment[d_index].opcode = splited[i + 1];
-                        dataSegment[d_index].data = splited[i + 2];
+                        dssm.dataSegment[d_index] = new Memory();
+                        dssm.dataSegment[d_index].i = "0";
+                        dssm.dataSegment[d_index].opcode = splited[i + 1];
+                        dssm.dataSegment[d_index].data = splited[i + 2];
                         d_index++;
                     }
                 }
