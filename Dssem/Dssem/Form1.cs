@@ -12,6 +12,7 @@ namespace Dssem
 {
     public partial class Form1 : Form
     {
+        public static string filePath;
         public Form1()
         {
             InitializeComponent();
@@ -22,23 +23,14 @@ namespace Dssem
             
         }
 
-        private void programSegment_SelectedIndexChanged(object sender, EventArgs e)
+     
+
+        private void openFileToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void label4_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label12_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
+            OpenFile of = new OpenFile();
+            of.ShowDialog();
+            MessageBox.Show(filePath);
+            
 
         }
     }

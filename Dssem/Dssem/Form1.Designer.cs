@@ -105,8 +105,9 @@
             // openFileToolStripMenuItem
             // 
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.openFileToolStripMenuItem.Text = "Open File";
+            this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
             // extractToolStripMenuItem
             // 
@@ -135,7 +136,7 @@
             this.programSegment.Name = "programSegment";
             this.programSegment.Size = new System.Drawing.Size(281, 340);
             this.programSegment.TabIndex = 1;
-            this.programSegment.SelectedIndexChanged += new System.EventHandler(this.programSegment_SelectedIndexChanged);
+           // this.programSegment.SelectedIndexChanged += new System.EventHandler(this.programSegment_SelectedIndexChanged);
             // 
             // dataGridView2
             // 
@@ -148,7 +149,7 @@
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(193, 187);
             this.dataGridView2.TabIndex = 3;
-            this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+       //     this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
             // 
             // Memory
             // 
@@ -187,7 +188,7 @@
             this.label12.Size = new System.Drawing.Size(67, 17);
             this.label12.TabIndex = 13;
             this.label12.Text = "OPCODE";
-            this.label12.Click += new System.EventHandler(this.label12_Click);
+          //  this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // textBox8
             // 
@@ -211,7 +212,7 @@
             this.label4.Size = new System.Drawing.Size(51, 17);
             this.label4.TabIndex = 9;
             this.label4.Text = "Stack :";
-            this.label4.Click += new System.EventHandler(this.label4_Click);
+           // this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
