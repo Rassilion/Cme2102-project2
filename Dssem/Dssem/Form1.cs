@@ -19,6 +19,26 @@ namespace Dssem
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            
+        }
+
+        private void programSegment_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label12_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dataGridView2_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
         }
     }

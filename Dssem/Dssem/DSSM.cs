@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Dssem
 {
     class DSSM
+
     {
         //memory , opcode tablosu, register arrayı
         //programın ana classı
