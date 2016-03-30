@@ -9,5 +9,10 @@ namespace Dssem
     class FileOperation
     {
         //file read write
+        public static void readFile(string path)
+        {
+
+        }
+            
     }
 }

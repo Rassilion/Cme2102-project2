@@ -34,9 +34,17 @@
             this.extractToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.programSegment = new System.Windows.Forms.ListBox();
+            this.codeList = new System.Windows.Forms.ListBox();
             this.dataGridView2 = new System.Windows.Forms.DataGridView();
+            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Memory = new System.Windows.Forms.GroupBox();
+            this.dataGridView3 = new System.Windows.Forms.DataGridView();
+            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.insvalue = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.dataName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.datavalue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.textBox8 = new System.Windows.Forms.TextBox();
@@ -51,31 +59,23 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.irtext = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.datatext = new System.Windows.Forms.TextBox();
-            this.artext = new System.Windows.Forms.TextBox();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.dataGridView3 = new System.Windows.Forms.DataGridView();
             this.actext = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
+            this.artext = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.dataName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.datavalue = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.insvalue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.labeltable = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).BeginInit();
             this.Memory.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -105,7 +105,7 @@
             // openFileToolStripMenuItem
             // 
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.openFileToolStripMenuItem.Text = "Open File";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
@@ -128,15 +128,14 @@
             this.aboutToolStripMenuItem.Size = new System.Drawing.Size(62, 24);
             this.aboutToolStripMenuItem.Text = "About";
             // 
-            // programSegment
+            // codeList
             // 
-            this.programSegment.FormattingEnabled = true;
-            this.programSegment.ItemHeight = 16;
-            this.programSegment.Location = new System.Drawing.Point(0, 45);
-            this.programSegment.Name = "programSegment";
-            this.programSegment.Size = new System.Drawing.Size(281, 340);
-            this.programSegment.TabIndex = 1;
-           // this.programSegment.SelectedIndexChanged += new System.EventHandler(this.programSegment_SelectedIndexChanged);
+            this.codeList.FormattingEnabled = true;
+            this.codeList.ItemHeight = 16;
+            this.codeList.Location = new System.Drawing.Point(0, 45);
+            this.codeList.Name = "codeList";
+            this.codeList.Size = new System.Drawing.Size(281, 340);
+            this.codeList.TabIndex = 1;
             // 
             // dataGridView2
             // 
@@ -149,7 +148,20 @@
             this.dataGridView2.RowTemplate.Height = 24;
             this.dataGridView2.Size = new System.Drawing.Size(193, 187);
             this.dataGridView2.TabIndex = 3;
-       //     this.dataGridView2.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView2_CellContentClick);
+            // 
+            // name
+            // 
+            this.name.HeaderText = "Name";
+            this.name.Name = "name";
+            this.name.ReadOnly = true;
+            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.name.Width = 50;
+            // 
+            // value
+            // 
+            this.value.HeaderText = "Value";
+            this.value.Name = "value";
+            this.value.ReadOnly = true;
             // 
             // Memory
             // 
@@ -171,6 +183,58 @@
             this.Memory.TabStop = false;
             this.Memory.Text = "Memory";
             // 
+            // dataGridView3
+            // 
+            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column1,
+            this.insvalue});
+            this.dataGridView3.Location = new System.Drawing.Point(452, 59);
+            this.dataGridView3.Name = "dataGridView3";
+            this.dataGridView3.RowTemplate.Height = 24;
+            this.dataGridView3.Size = new System.Drawing.Size(193, 187);
+            this.dataGridView3.TabIndex = 16;
+            // 
+            // Column1
+            // 
+            this.Column1.HeaderText = "Name";
+            this.Column1.Name = "Column1";
+            this.Column1.ReadOnly = true;
+            this.Column1.Width = 50;
+            // 
+            // insvalue
+            // 
+            this.insvalue.HeaderText = "Value";
+            this.insvalue.Name = "insvalue";
+            this.insvalue.ReadOnly = true;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataName,
+            this.datavalue});
+            this.dataGridView1.Location = new System.Drawing.Point(232, 59);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.Size = new System.Drawing.Size(193, 187);
+            this.dataGridView1.TabIndex = 15;
+            // 
+            // dataName
+            // 
+            this.dataName.HeaderText = "Name";
+            this.dataName.Name = "dataName";
+            this.dataName.ReadOnly = true;
+            this.dataName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.dataName.Width = 50;
+            // 
+            // datavalue
+            // 
+            this.datavalue.HeaderText = "Value";
+            this.datavalue.Name = "datavalue";
+            this.datavalue.ReadOnly = true;
+            this.datavalue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -188,7 +252,6 @@
             this.label12.Size = new System.Drawing.Size(67, 17);
             this.label12.TabIndex = 13;
             this.label12.Text = "OPCODE";
-          //  this.label12.Click += new System.EventHandler(this.label12_Click);
             // 
             // textBox8
             // 
@@ -212,7 +275,6 @@
             this.label4.Size = new System.Drawing.Size(51, 17);
             this.label4.TabIndex = 9;
             this.label4.Text = "Stack :";
-           // this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // label3
             // 
@@ -311,6 +373,15 @@
             this.label8.TabIndex = 15;
             this.label8.Text = "DR :";
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(6, 123);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(34, 17);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "AC :";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -350,37 +421,6 @@
             this.datatext.Size = new System.Drawing.Size(100, 22);
             this.datatext.TabIndex = 9;
             // 
-            // artext
-            // 
-            this.artext.Location = new System.Drawing.Point(52, 82);
-            this.artext.Name = "artext";
-            this.artext.Size = new System.Drawing.Size(100, 22);
-            this.artext.TabIndex = 7;
-            // 
-            // dataGridView1
-            // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.dataName,
-            this.datavalue});
-            this.dataGridView1.Location = new System.Drawing.Point(232, 59);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(193, 187);
-            this.dataGridView1.TabIndex = 15;
-            // 
-            // dataGridView3
-            // 
-            this.dataGridView3.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView3.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
-            this.insvalue});
-            this.dataGridView3.Location = new System.Drawing.Point(452, 59);
-            this.dataGridView3.Name = "dataGridView3";
-            this.dataGridView3.RowTemplate.Height = 24;
-            this.dataGridView3.Size = new System.Drawing.Size(193, 187);
-            this.dataGridView3.TabIndex = 16;
-            // 
             // actext
             // 
             this.actext.Location = new System.Drawing.Point(52, 123);
@@ -388,14 +428,12 @@
             this.actext.Size = new System.Drawing.Size(100, 22);
             this.actext.TabIndex = 8;
             // 
-            // label7
+            // artext
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(6, 123);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(34, 17);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "AC :";
+            this.artext.Location = new System.Drawing.Point(52, 82);
+            this.artext.Name = "artext";
+            this.artext.Size = new System.Drawing.Size(100, 22);
+            this.artext.TabIndex = 7;
             // 
             // groupBox2
             // 
@@ -405,48 +443,6 @@
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Micro operation";
-            // 
-            // name
-            // 
-            this.name.HeaderText = "Name";
-            this.name.Name = "name";
-            this.name.ReadOnly = true;
-            this.name.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.name.Width = 50;
-            // 
-            // value
-            // 
-            this.value.HeaderText = "Value";
-            this.value.Name = "value";
-            this.value.ReadOnly = true;
-            // 
-            // dataName
-            // 
-            this.dataName.HeaderText = "Name";
-            this.dataName.Name = "dataName";
-            this.dataName.ReadOnly = true;
-            this.dataName.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            this.dataName.Width = 50;
-            // 
-            // datavalue
-            // 
-            this.datavalue.HeaderText = "Value";
-            this.datavalue.Name = "datavalue";
-            this.datavalue.ReadOnly = true;
-            this.datavalue.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Name";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 50;
-            // 
-            // insvalue
-            // 
-            this.insvalue.HeaderText = "Value";
-            this.insvalue.Name = "insvalue";
-            this.insvalue.ReadOnly = true;
             // 
             // labeltable
             // 
@@ -477,7 +473,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.Memory);
-            this.Controls.Add(this.programSegment);
+            this.Controls.Add(this.codeList);
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.Color.Black;
             this.MainMenuStrip = this.menuStrip1;
@@ -490,10 +486,10 @@
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView2)).EndInit();
             this.Memory.ResumeLayout(false);
             this.Memory.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView3)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -507,7 +503,7 @@
         private System.Windows.Forms.ToolStripMenuItem openFileToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem extractToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
-        private System.Windows.Forms.ListBox programSegment;
+        private System.Windows.Forms.ListBox codeList;
         private System.Windows.Forms.DataGridView dataGridView2;
         private System.Windows.Forms.GroupBox Memory;
         private System.Windows.Forms.Label label4;
