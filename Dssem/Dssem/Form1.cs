@@ -90,17 +90,27 @@ namespace Dssem
 
         public void loadFile()
         {
-            using (StreamReader sr = new StreamReader(filePath))
+            try
             {
-                String line;
-                // Read and display lines from the file until the end of 
-                // the file is reached.
-                while ((line = sr.ReadLine()) != null)
+                using (StreamReader sr = new StreamReader(filePath))
                 {
-                    line = line.Replace('\t', ' ');//remove tabs
-                    codeList.Items.Add(line);
+                    String line;
+                    // Read and display lines from the file until the end of 
+                    // the file is reached.
+                    while ((line = sr.ReadLine()) != null)
+                    {
+                        line = line.Replace('\t', ' ');//remove tabs
+                        codeList.Items.Add(line);
+                    }
                 }
             }
+            catch (ArgumentException e)
+            {
+                MessageBox.Show("Wrong input");
+                
+            }
+            
+           
 
         }
         private void parseLabel()

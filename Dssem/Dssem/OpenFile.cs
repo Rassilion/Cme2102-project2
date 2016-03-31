@@ -22,9 +22,9 @@ namespace Dssem
         {
             //Browse file
 
-            openFileDialog1.Title = " Please select the assembly file " ;
+            openFileDialog1.Title = " Please select the assembly file ";
 
-            openFileDialog1.Filter = " (*.asm) | *.asm | (*.basm) | *.basm " ;
+            openFileDialog1.Filter = " (*.asm) | *.asm | (*.basm) | *.basm ";
 
             openFileDialog1.ShowDialog();
 
@@ -39,6 +39,16 @@ namespace Dssem
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void OpenFile_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void openFileDialog1_FileOk(object sender, CancelEventArgs e)
+        {
+
         }
     }
 }
