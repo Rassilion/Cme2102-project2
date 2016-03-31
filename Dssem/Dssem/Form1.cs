@@ -178,13 +178,13 @@ namespace Dssem
                         }
                         else if (d_index == -1)
                         {
-                            string ibit, data;
-                            if (splited[i + 1] == "I")
+                            string ibit="0", data="0000";
+                            if (splited.Length>2&&splited[i + 2] == "I")//opcode data I
                             {
                                 ibit = "1";
-                                data = splited[i + 2];
+                                data = splited[i + 1];
                             }
-                            else
+                            else if(splited.Length > 1) //opcode with data
                             {
                                 ibit = "0";
                                 data = splited[i + 1];
