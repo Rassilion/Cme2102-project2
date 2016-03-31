@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 
 namespace Dssem
 {
-    class Util
+    public static class Util
     {
         //sayi çevirme fonksiyonları
-
-        public static string Converter(string number, string fromBase, string toBase)
+        public static string expandBit(string str,int bit)
+        {
+            string result="";
+            for (int i = 0; i < bit-str.Length; i++)
+            {
+                result += "0";
+            }
+            return result + str;
+        }
+        public static string convert(string number, string fromBase, string toBase)
         {
             string result = "";
             if (fromBase == "DEC" && toBase == "BIN")
@@ -64,7 +72,7 @@ namespace Dssem
             }
 
 
-            return result;
+            return expandBit(result,4);
         }
     }
 }

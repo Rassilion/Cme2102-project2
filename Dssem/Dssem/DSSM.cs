@@ -12,8 +12,14 @@ namespace Dssem
         public Memory[] codeSegment = new Memory[16];
         public Memory[] dataSegment = new Memory[16];
         public Memory[] stackSegment = new Memory[8];
+        public Dictionary<string, string> labelTable = new Dictionary<string, string>();
 
         //memory , opcode tablosu, register arrayı
         //programın ana classı
+
+        public DSSM()
+        {
+            Memory.initdic();
+        }
     }
 }

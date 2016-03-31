@@ -34,6 +34,7 @@ namespace Dssem
             OpenFile of = new OpenFile();
             of.ShowDialog();
             loadFile();
+            parseLabel();
             parseCode();
             updateForm();
         }
@@ -102,10 +103,8 @@ namespace Dssem
             }
 
         }
-
-        private void parseCode()
-        {
-            //TODO: error check
+        private void parseLabel()
+        { //TODO: error check
             labeltable.Items.Clear();
             int c_index = 0, d_index = -1;
             foreach (var line in codeList.Items)
@@ -113,15 +112,13 @@ namespace Dssem
                 string[] splited = line.ToString().Split(' ');
                 for (int i = 0; i < splited.Length; i++)
                 {
+                    if (splited[i] == "")
+                        continue;
                     if (splited[i].StartsWith("%"))//comment 
-                    {/*
-                    for (int j = i; j < splited.Length; j++)//finish comment
                     {
-                        commentBox.Text += " " + splited[j];
-                    }*/
                         break;
                     }
-                    else if (splited[i].Length == 3 && !splited[i].Contains(','))//opcode
+                    else if (!splited[i].Contains(','))//opcode
                     {
                         if (splited[i] == "ORG")
                         {
@@ -129,28 +126,74 @@ namespace Dssem
                                 c_index = Convert.ToInt32(splited[i + 2]);
                             if (splited[i + 1].ToUpper() == "D")
                                 d_index = Convert.ToInt32(splited[i + 2]);
-                        }
-                        else if (d_index == -1)
-                        {
-                            dssm.codeSegment[c_index] = new Memory();
-                            dssm.codeSegment[c_index].i = "0";
-                            dssm.codeSegment[c_index].opcode = splited[i];
-                            dssm.codeSegment[c_index].data = splited[i + 1];
-                            c_index++;
+                            break;
                         }
                     }
                     else if (splited[i].Contains(','))
                     {
-                        labeltable.Items.Add(splited[i] + " " + splited[i + 1] + " " + splited[i + 2]);
-                        dssm.dataSegment[d_index] = new Memory();
-                        dssm.dataSegment[d_index].i = "0";
-                        dssm.dataSegment[d_index].opcode = splited[i + 1];
-                        dssm.dataSegment[d_index].data = splited[i + 2];
+                        splited[i] = splited[i].Remove(splited[i].Length-1);
+                        labeltable.Items.Add(splited[i] + " " + splited[i + 1] + " " + splited[i + 2]);//gui
+                        dssm.labelTable.Add(splited[i], Util.convert(Convert.ToString(d_index), "DEC", "BIN"));//add label adress to label table
+                        dssm.dataSegment[d_index] = new Memory("0", "0000", Util.convert(splited[i + 2], splited[i + 1], "BIN"));//add label's initial value to data memory
                         d_index++;
                     }
                 }
             }
 
+        }
+        private void parseCode()
+        {
+            //TODO: error check
+            int c_index = 0, d_index = -1;
+            foreach (var line in codeList.Items)
+            {
+                string[] splited = line.ToString().Split(' ');
+                for (int i = 0; i < splited.Length; i++)
+                {
+                    if (splited[i] == "")
+                        continue;
+                    if (splited[i].StartsWith("%"))//comment 
+                    {
+                        break;
+                    }
+                    else if (!splited[i].Contains(','))//opcode
+                    {
+                        if (splited[i] == "ORG")
+                        {
+                            if (splited[i + 1].ToUpper() == "C")
+                                c_index = Convert.ToInt32(splited[i + 2]);
+                            if (splited[i + 1].ToUpper() == "D")
+                                d_index = Convert.ToInt32(splited[i + 2]);
+                            break;
+                        }
+                        else if (d_index == -1)
+                        {
+                            string ibit, data;
+                            if (splited[i + 1] == "I")
+                            {
+                                ibit = "1";
+                                data = splited[i + 2];
+                            }
+                            else
+                            {
+                                ibit = "0";
+                                data = splited[i + 1];
+                            }
+                            //get label adress
+                            if (dssm.labelTable.ContainsKey(data))
+                                data = dssm.labelTable[data];
+                            dssm.codeSegment[c_index] = new Memory(ibit, splited[i], data);
+                            c_index++;
+                            break;
+                        }
+                    }
+                    else if (splited[i].Contains(','))
+                    {
+                        break;
+                    }
+                }
+
+            }
         }
 
 
