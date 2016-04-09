@@ -14,16 +14,16 @@ namespace Dssem
         public Memory[] stackSegment = new Memory[8];
        public Register PC = new Register("0000",4);
         public Register DR = new Register("0000", 4);
-        public Register IR = new Register("0000", 4);
+        public Register IR = new Register("0000", 9);
         public Register AC = new Register("0000", 4);
         public Register AR = new Register("0000", 4);
-        public Register INPR = new Register("0000", 4);
-        public Register SP = new Register("0000", 4);
+        public Register INPR = new Register("0000", 8);
+        public Register SP = new Register("0000", 3);
 
         public int E = 0;
         public int SC = 0;
         public int S = 0;
-        public int I = 0;
+        public string I = "0";
         public int FGI = 0;
        
         
@@ -48,11 +48,16 @@ namespace Dssem
 
         public void fetch()
         {
-            
+            IR.Load(PC.getData());
         }
-        public void decode()
+        public string decode()
         {
             PC.Increment();
+            I = (IR.getData()).Substring(0, 1);
+            AR.Load((IR.getData()).Substring(4, 4));
+            return (IR.getData()).Substring(1, 3);
+
+
         }
 
 
