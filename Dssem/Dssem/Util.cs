@@ -18,6 +18,10 @@ namespace Dssem
             }
             return result + str;
         }
+        public static string decreaseBit(string str, int bit)
+        {
+            return str.Substring(str.Length -bit,bit);
+        }
         public static string convert(string number, string fromBase, string toBase)
         {
             string result = "";

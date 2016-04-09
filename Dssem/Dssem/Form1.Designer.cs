@@ -68,6 +68,12 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.labeltable = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
+            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeSegmentView)).BeginInit();
             this.Memory.SuspendLayout();
@@ -296,6 +302,12 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.groupBox1.Controls.Add(this.label15);
+            this.groupBox1.Controls.Add(this.textBox3);
+            this.groupBox1.Controls.Add(this.label14);
+            this.groupBox1.Controls.Add(this.textBox2);
+            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.textBox1);
             this.groupBox1.Controls.Add(this.label11);
             this.groupBox1.Controls.Add(this.comboBox1);
             this.groupBox1.Controls.Add(this.label10);
@@ -314,7 +326,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(418, 175);
+            this.groupBox1.Size = new System.Drawing.Size(531, 175);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registers";
@@ -322,7 +334,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(304, 18);
+            this.label11.Location = new System.Drawing.Point(442, 17);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(89, 17);
             this.label11.TabIndex = 19;
@@ -335,7 +347,7 @@
             "BINARY",
             "DECIMAL",
             "HEX"});
-            this.comboBox1.Location = new System.Drawing.Point(307, 47);
+            this.comboBox1.Location = new System.Drawing.Point(460, 47);
             this.comboBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(65, 24);
@@ -460,14 +472,66 @@
             // 
             this.button1.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.button1.ForeColor = System.Drawing.Color.Blue;
-            this.button1.Location = new System.Drawing.Point(754, 54);
+            this.button1.Location = new System.Drawing.Point(852, 58);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(148, 43);
+            this.button1.Size = new System.Drawing.Size(85, 43);
             this.button1.TabIndex = 9;
             this.button1.Text = "Read Next-->";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(341, 47);
+            this.textBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 22);
+            this.textBox1.TabIndex = 20;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(302, 52);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(37, 13);
+            this.label1.TabIndex = 21;
+            this.label1.Text = "INPR :";
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(341, 85);
+            this.textBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 22);
+            this.textBox2.TabIndex = 22;
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(301, 85);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(34, 17);
+            this.label14.TabIndex = 23;
+            this.label14.Text = "SC :";
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(342, 118);
+            this.textBox3.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(32, 22);
+            this.textBox3.TabIndex = 24;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(302, 118);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(25, 17);
+            this.label15.TabIndex = 25;
+            this.label15.Text = "E :";
             // 
             // Form1
             // 
@@ -484,7 +548,7 @@
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.Color.Black;
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "DSSM";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -544,6 +608,12 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn datavalue;
         private System.Windows.Forms.DataGridViewTextBoxColumn value;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 
