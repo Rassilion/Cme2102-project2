@@ -74,7 +74,7 @@ namespace Dssem
         }
         public int getDataInt()
         {
-            return Convert.ToInt32(data);
+            return Convert.ToInt32(Util.convert(data, "BIN", "DEC"));
         }
        
         //clr load fonksiyonları

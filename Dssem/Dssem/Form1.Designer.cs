@@ -65,7 +65,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.inprtext = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.numbermod = new System.Windows.Forms.ComboBox();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
@@ -160,6 +160,7 @@
             this.codeSegmentView.Name = "codeSegmentView";
             this.codeSegmentView.RowHeadersWidth = 70;
             this.codeSegmentView.RowTemplate.Height = 24;
+            this.codeSegmentView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.codeSegmentView.Size = new System.Drawing.Size(188, 282);
             this.codeSegmentView.TabIndex = 3;
             // 
@@ -327,7 +328,7 @@
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.inprtext);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.comboBox1);
+            this.groupBox1.Controls.Add(this.numbermod);
             this.groupBox1.Controls.Add(this.label10);
             this.groupBox1.Controls.Add(this.label9);
             this.groupBox1.Controls.Add(this.label8);
@@ -468,18 +469,20 @@
             this.label11.TabIndex = 19;
             this.label11.Text = "NumberMod:";
             // 
-            // comboBox1
+            // numbermod
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
+            this.numbermod.FormattingEnabled = true;
+            this.numbermod.Items.AddRange(new object[] {
             "BINARY",
             "DECIMAL",
-            "HEX"});
-            this.comboBox1.Location = new System.Drawing.Point(345, 38);
-            this.comboBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(50, 21);
-            this.comboBox1.TabIndex = 18;
+            "HEX",
+            "OCTAL"});
+            this.numbermod.Location = new System.Drawing.Point(345, 38);
+            this.numbermod.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.numbermod.Name = "numbermod";
+            this.numbermod.Size = new System.Drawing.Size(50, 21);
+            this.numbermod.TabIndex = 18;
+            this.numbermod.SelectedIndexChanged += new System.EventHandler(this.numbermod_SelectedIndexChanged);
             // 
             // label10
             // 
@@ -675,7 +678,7 @@
         private System.Windows.Forms.TextBox pctext;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox numbermod;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label8;

@@ -15,6 +15,8 @@ namespace Dssem
     {
         private DSSM dssm = new DSSM();
 
+        string showValue = "BIN";
+
         public static string filePath;
         public Form1()
         {
@@ -41,6 +43,10 @@ namespace Dssem
 
         public void updateForm()
         {
+            //clear
+            codeSegmentView.Rows.Clear();
+            dataSegmentView.Rows.Clear();
+            stackSegmentView.Rows.Clear();
             //code segment
             foreach (Memory cell in dssm.codeSegment)
             {
@@ -49,11 +55,15 @@ namespace Dssem
                     codeSegmentView.Rows.Add("");
                     continue;
                 }
-                codeSegmentView.Rows.Add(cell.ToString());
+                codeSegmentView.Rows.Add(Util.convert(cell.ToString(), "BIN", showValue));
             }
             foreach (DataGridViewRow row in codeSegmentView.Rows)
             {
                 codeSegmentView.Rows[row.Index].HeaderCell.Value = (row.Index).ToString();
+                if (dssm.PC.getDataInt() == row.Index)
+                {
+                    row.Selected = true;
+                }
             }
 
             //data segment
@@ -64,7 +74,7 @@ namespace Dssem
                     dataSegmentView.Rows.Add("");
                     continue;
                 }
-                dataSegmentView.Rows.Add(cell.ToString());
+                dataSegmentView.Rows.Add(Util.convert(cell.ToString(), "BIN", showValue));
             }
             foreach (DataGridViewRow row in dataSegmentView.Rows)
             {
@@ -79,7 +89,7 @@ namespace Dssem
                     stackSegmentView.Rows.Add("");
                     continue;
                 }
-                stackSegmentView.Rows.Add(cell.ToString());
+                stackSegmentView.Rows.Add(Util.convert(cell.ToString(), "BIN", showValue));
             }
             foreach (DataGridViewRow row in stackSegmentView.Rows)
             {
@@ -88,21 +98,20 @@ namespace Dssem
 
             //registers
 
-            pctext.Text= dssm.PC.getData();
-            artext.Text = dssm.AR.getData();
-            drtext.Text = dssm.DR.getData();
-            irtext.Text = dssm.IR.getData();
-            actext.Text = dssm.AC.getData();
-            sptext.Text = dssm.SP.getData();
-            inprtext.Text = dssm.INPR.getData();
+            pctext.Text = Util.convert(dssm.PC.getData(), "BIN", showValue);
+            artext.Text = Util.convert(dssm.AR.getData(), "BIN", showValue);
+            drtext.Text = Util.convert(dssm.DR.getData(), "BIN", showValue);
+            irtext.Text = Util.convert(dssm.IR.getData(), "BIN", showValue);
+            actext.Text = Util.convert(dssm.AC.getData(), "BIN", showValue);
+            sptext.Text = Util.convert(dssm.SP.getData(), "BIN", showValue);
+            inprtext.Text = Util.convert(dssm.INPR.getData(), "BIN", showValue);
 
             //flags
-            etext.Text = Convert.ToString(dssm.E);
-            fgitext.Text = Convert.ToString(dssm.FGI);
-            stext.Text = Convert.ToString(dssm.S);
-            itext.Text = Convert.ToString(dssm.I);
-            sctext.Text = Convert.ToString(dssm.SC);
-
+            etext.Text = Util.convert(Convert.ToString(dssm.E), "BIN", showValue);
+            fgitext.Text = Util.convert(Convert.ToString(dssm.FGI), "BIN", showValue);
+            stext.Text = Util.convert(Convert.ToString(dssm.S), "BIN", showValue);
+            itext.Text = Util.convert(Convert.ToString(dssm.I), "BIN", showValue);
+            sctext.Text = Util.convert(Convert.ToString(dssm.SC), "BIN", showValue);
 
 
         }
@@ -126,10 +135,10 @@ namespace Dssem
             catch (ArgumentException e)
             {
                 MessageBox.Show("Wrong input");
-                
+
             }
-            
-           
+
+
 
         }
         private void parseLabel()
@@ -160,7 +169,7 @@ namespace Dssem
                     }
                     else if (splited[i].Contains(','))
                     {
-                        splited[i] = splited[i].Remove(splited[i].Length-1);
+                        splited[i] = splited[i].Remove(splited[i].Length - 1);
                         labeltable.Items.Add(splited[i] + " " + splited[i + 1] + " " + splited[i + 2]);//gui
                         dssm.labelTable.Add(splited[i], Util.convert(Convert.ToString(d_index), "DEC", "BIN"));//add label adress to label table
                         dssm.dataSegment[d_index] = new Memory("0", "0000", Util.convert(splited[i + 2], splited[i + 1], "BIN"));//add label's initial value to data memory
@@ -190,20 +199,23 @@ namespace Dssem
                         if (splited[i] == "ORG")
                         {
                             if (splited[i + 1].ToUpper() == "C")
+                            {
                                 c_index = Convert.ToInt32(splited[i + 2]);
+                                dssm.initPC(Util.convert(splited[i + 2], "DEC", "BIN"));
+                            }
                             if (splited[i + 1].ToUpper() == "D")
                                 d_index = Convert.ToInt32(splited[i + 2]);
                             break;
                         }
                         else if (d_index == -1)
                         {
-                            string ibit="0", data="0000";
-                            if (splited.Length>2&&splited[i + 2] == "I")//opcode data I
+                            string ibit = "0", data = "0000";
+                            if (splited.Length > 2 && splited[i + 2] == "I")//opcode data I
                             {
                                 ibit = "1";
                                 data = splited[i + 1];
                             }
-                            else if(splited.Length > 1) //opcode with data
+                            else if (splited.Length > 1) //opcode with data
                             {
                                 ibit = "0";
                                 data = splited[i + 1];
@@ -274,6 +286,28 @@ namespace Dssem
 
         }
 
-       
+        private void numbermod_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (numbermod.Text == "BINARY")
+            {
+                showValue = "BIN";
+                updateForm();
+            }
+            else if (numbermod.Text == "HEX")
+            {
+                showValue = "HEX";
+                updateForm();
+            }
+            else if (numbermod.Text == "DECIMAL")
+            {
+                showValue = "DEC";
+                updateForm();
+            }
+            else if (numbermod.Text == "OCTAL")
+            {
+                showValue = "OCT";
+                updateForm();
+            }
+        }
     }
 }

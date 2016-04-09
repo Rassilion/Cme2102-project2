@@ -97,7 +97,7 @@ namespace Dssem
 
         public string ToString()
         {
-            return i +" "+ opcode + " " + data;
+            return i +""+ opcode + "" + data;
         }
 
         

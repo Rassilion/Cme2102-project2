@@ -24,10 +24,11 @@ namespace Dssem
         }
         public static string convert(string number, string fromBase, string toBase)
         {
-            string result = "";
+            string result = number;
             if (fromBase == "DEC" && toBase == "BIN")
             {
                 result = Convert.ToString(Convert.ToInt32(number, 10), 2);
+                result = expandBit(result, 4);
             }
             else if (fromBase == "DEC" && toBase == "HEX")
             {
@@ -53,6 +54,7 @@ namespace Dssem
             else if (fromBase == "HEX" && toBase == "BIN")
             {
                 result = Convert.ToString(Convert.ToInt32(number, 16), 2);
+                result = expandBit(result, 4);
             }
             else if (fromBase == "HEX" && toBase == "DEC")
             {
@@ -73,10 +75,11 @@ namespace Dssem
             else if (fromBase == "OCT" && toBase == "BIN")
             {
                 result = Convert.ToString(Convert.ToInt32(number, 8), 2);
+                result = expandBit(result, 4);
             }
 
 
-            return expandBit(result,4);
+            return result;
         }
     }
 }
