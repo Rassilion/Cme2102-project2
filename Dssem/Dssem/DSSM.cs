@@ -48,7 +48,7 @@ namespace Dssem
 
         public void fetch()
         {
-            IR.Load(PC.getData());
+            IR.Load(codeSegment[PC.getDataInt()].i+ codeSegment[PC.getDataInt()].opcode+ codeSegment[PC.getDataInt()].data);
         }
         public string decode()
         {
