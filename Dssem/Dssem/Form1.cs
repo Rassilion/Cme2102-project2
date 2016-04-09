@@ -86,6 +86,25 @@ namespace Dssem
                 stackSegmentView.Rows[row.Index].HeaderCell.Value = (row.Index).ToString();
             }
 
+            //registers
+
+            pctext.Text= dssm.PC.getData();
+            artext.Text = dssm.AR.getData();
+            drtext.Text = dssm.DR.getData();
+            irtext.Text = dssm.IR.getData();
+            actext.Text = dssm.AC.getData();
+            sptext.Text = dssm.SP.getData();
+            inprtext.Text = dssm.INPR.getData();
+
+            //flags
+            etext.Text = Convert.ToString(dssm.E);
+            fgitext.Text = Convert.ToString(dssm.FGI);
+            stext.Text = Convert.ToString(dssm.S);
+            itext.Text = Convert.ToString(dssm.I);
+            sctext.Text = Convert.ToString(dssm.SC);
+
+
+
         }
 
         public void loadFile()
