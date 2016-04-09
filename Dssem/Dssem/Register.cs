@@ -10,10 +10,68 @@ namespace Dssem
     {
 
         //base class for registers
-        int data;
+        string type;
+        public string data;
         int size;// kaç bit
         //type enum
+        public Register(string type, string data, int size)
+        {
+            this.type = type;
+            this.data = data;
+            this.size = size;
+        }
+        public void Load(string data)
+        {
+            if (data.Length > size)
+            {
+                this.data = data.Substring(data.Length - size, size);
+            }
+            else {
+                this.data = Util.expandBit(data,size);
+            }
+         
+        }
 
+        public void Increment()
+        {
+            string number; 
+            number = Util.convert(data,"BIN","DEC");
+            long num = Convert.ToInt64(number)+1;
+            if (Math.Pow(2, size) < num)
+            {
+                number = Util.convert(Convert.ToString(num),"DEC","BIN");
+                Load( Util.expandBit("0",size));
+            }
+            else {
+                number = Util.convert(Convert.ToString(num),"DEC","BIN");
+                Load(number);
+            }
+            
+        
+        }
+        public void Clear()
+        {
+            data = Util.expandBit("0", size);
+        }
+        public void Decrement()
+        {
+            string number;
+            number = Util.convert(data, "BIN", "DEC");
+            long num = Convert.ToInt64(number) - 1;
+            if (num < 0)
+            {
+                number = Util.convert(Convert.ToString(num), "DEC", "BIN");
+               Load( number.Substring(number.Length - size, number.Length));
+            }
+            else {
+                number = Util.convert(Convert.ToString(num), "DEC", "BIN");
+                Load(number);
+            }
+            
+
+
+        }
+       
         //clr load fonksiyonları
     }
 }
