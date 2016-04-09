@@ -59,6 +59,12 @@ namespace Dssem
 
 
         }
+       //Memory Reference
+        public void memoryOR()
+        {
+           // DR.Load(dataSegment);
+        
+        }
 
 
     }
