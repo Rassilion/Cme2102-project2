@@ -12,13 +12,13 @@ namespace Dssem
         public Memory[] codeSegment = new Memory[16];
         public Memory[] dataSegment = new Memory[16];
         public Memory[] stackSegment = new Memory[8];
-        public Register PC = new Register("0000", 4);
-        public Register DR = new Register("0000", 4);
-        public Register IR = new Register("0000", 9);
-        public Register AC = new Register("0000", 4);
-        public Register AR = new Register("0000", 4);
-        public Register INPR = new Register("0000", 8);
-        public Register SP = new Register("0000", 3);
+        public Register PC = new Register("0", 4);
+        public Register DR = new Register("0", 4);
+        public Register IR = new Register("0", 9);
+        public Register AC = new Register("0", 4);
+        public Register AR = new Register("0", 4);
+        public Register INPR = new Register("0", 8);
+        public Register SP = new Register("0", 3);
 
 
         public int E = 0;

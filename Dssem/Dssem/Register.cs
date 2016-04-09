@@ -14,8 +14,8 @@ namespace Dssem
         int size;// kaç bit
         public Register(string data, int size)
         {
-            this.data = data;
             this.size = size;
+            Load(data);            
         }
         public void Load(string data)
         {
