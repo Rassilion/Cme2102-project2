@@ -10,13 +10,11 @@ namespace Dssem
     {
 
         //base class for registers
-        string type;
         public string data;
         int size;// kaç bit
         //type enum
-        public Register(string type, string data, int size)
+        public Register(string data, int size)
         {
-            this.type = type;
             this.data = data;
             this.size = size;
         }

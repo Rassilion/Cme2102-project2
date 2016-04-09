@@ -12,19 +12,19 @@ namespace Dssem
         public Memory[] codeSegment = new Memory[16];
         public Memory[] dataSegment = new Memory[16];
         public Memory[] stackSegment = new Memory[8];
-        Register PC;
-        Register DR;
-        Register IR;
-        Register AC;
-        Register AR;
-        Register INPR;
-        Register SP;
+       public Register PC = new Register("0000",4);
+        public Register DR = new Register("0000", 4);
+        public Register IR = new Register("0000", 4);
+        public Register AC = new Register("0000", 4);
+        public Register AR = new Register("0000", 4);
+        public Register INPR = new Register("0000", 4);
+        public Register SP = new Register("0000", 4);
 
-        int E;
-        int SC;
-        int S;
-        int I;
-        int FGI;
+        public int E = 0;
+        public int SC = 0;
+        public int S = 0;
+        public int I = 0;
+        public int FGI = 0;
        
         
 
@@ -37,10 +37,12 @@ namespace Dssem
         public DSSM()
         {
             Memory.initdic();
+          
+
         }
         public void initPC(string value)
         {
-           
+            PC.Load(value);
         }
         
 
@@ -50,7 +52,7 @@ namespace Dssem
         }
         public void decode()
         {
-            
+            PC.Increment();
         }
 
 
