@@ -289,11 +289,20 @@ namespace Dssem
         int index = 0;
         private void button1_Click(object sender, EventArgs e)
         {
-            codeList.SelectedIndex = index;
-            parse(codeList.Items[index].ToString());
-            index++;
-            mop.Text = dssm.nextInstruction();
-            updateForm();
+            try
+            {
+                codeList.SelectedIndex = index;
+                parse(codeList.Items[index].ToString());
+                index++;
+                mop.Text = dssm.nextInstruction();
+                updateForm();
+            }
+            catch (ArgumentOutOfRangeException A)
+            {
+                MessageBox.Show("File error","ERROR !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+               
+            }
+           
         }
 
         private void numbermod_SelectedIndexChanged(object sender, EventArgs e)
