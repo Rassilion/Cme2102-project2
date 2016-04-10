@@ -32,7 +32,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.extractToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.codeList = new System.Windows.Forms.ListBox();
@@ -110,7 +110,7 @@
             // 
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openFileToolStripMenuItem,
-            this.extractToolStripMenuItem,
+            this.exportToolStripMenuItem,
             this.resetToolStripMenuItem});
             this.menuToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
@@ -124,11 +124,11 @@
             this.openFileToolStripMenuItem.Text = "Open File";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
-            // extractToolStripMenuItem
+            // exportToolStripMenuItem
             // 
-            this.extractToolStripMenuItem.Name = "extractToolStripMenuItem";
-            this.extractToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.extractToolStripMenuItem.Text = "Extract";
+            this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.exportToolStripMenuItem.Text = "Export";
             // 
             // resetToolStripMenuItem
             // 
@@ -343,7 +343,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox1.Size = new System.Drawing.Size(545, 175);
+            this.groupBox1.Size = new System.Drawing.Size(585, 175);
             this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Registers";
@@ -351,7 +351,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(371, 153);
+            this.label18.Location = new System.Drawing.Point(396, 147);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(21, 17);
             this.label18.TabIndex = 31;
@@ -360,15 +360,15 @@
             // label17
             // 
             this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(295, 153);
+            this.label17.Location = new System.Drawing.Point(311, 147);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(38, 17);
+            this.label17.Size = new System.Drawing.Size(34, 17);
             this.label17.TabIndex = 30;
-            this.label17.Text = "FGI :";
+            this.label17.Text = "FGI:";
             // 
             // stext
             // 
-            this.stext.Location = new System.Drawing.Point(393, 149);
+            this.stext.Location = new System.Drawing.Point(423, 147);
             this.stext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.stext.Name = "stext";
             this.stext.Size = new System.Drawing.Size(32, 22);
@@ -376,7 +376,7 @@
             // 
             // fgitext
             // 
-            this.fgitext.Location = new System.Drawing.Point(333, 149);
+            this.fgitext.Location = new System.Drawing.Point(355, 147);
             this.fgitext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.fgitext.Name = "fgitext";
             this.fgitext.Size = new System.Drawing.Size(32, 22);
@@ -385,7 +385,7 @@
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(371, 118);
+            this.label16.Location = new System.Drawing.Point(398, 114);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(19, 17);
             this.label16.TabIndex = 27;
@@ -393,7 +393,7 @@
             // 
             // itext
             // 
-            this.itext.Location = new System.Drawing.Point(393, 114);
+            this.itext.Location = new System.Drawing.Point(423, 113);
             this.itext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.itext.Name = "itext";
             this.itext.Size = new System.Drawing.Size(32, 22);
@@ -402,7 +402,7 @@
             // label15
             // 
             this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(301, 118);
+            this.label15.Location = new System.Drawing.Point(324, 114);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(25, 17);
             this.label15.TabIndex = 25;
@@ -410,7 +410,7 @@
             // 
             // etext
             // 
-            this.etext.Location = new System.Drawing.Point(333, 114);
+            this.etext.Location = new System.Drawing.Point(355, 113);
             this.etext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.etext.Name = "etext";
             this.etext.Size = new System.Drawing.Size(32, 22);
@@ -419,7 +419,7 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(301, 85);
+            this.label14.Location = new System.Drawing.Point(315, 85);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(34, 17);
             this.label14.TabIndex = 23;
@@ -427,7 +427,7 @@
             // 
             // sctext
             // 
-            this.sctext.Location = new System.Drawing.Point(341, 85);
+            this.sctext.Location = new System.Drawing.Point(355, 82);
             this.sctext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sctext.Name = "sctext";
             this.sctext.Size = new System.Drawing.Size(100, 22);
@@ -437,7 +437,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 5.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label1.Location = new System.Drawing.Point(301, 52);
+            this.label1.Location = new System.Drawing.Point(312, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 21;
@@ -445,7 +445,7 @@
             // 
             // inprtext
             // 
-            this.inprtext.Location = new System.Drawing.Point(341, 47);
+            this.inprtext.Location = new System.Drawing.Point(355, 49);
             this.inprtext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.inprtext.Name = "inprtext";
             this.inprtext.Size = new System.Drawing.Size(100, 22);
@@ -454,7 +454,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(443, 17);
+            this.label11.Location = new System.Drawing.Point(469, 17);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(89, 17);
             this.label11.TabIndex = 19;
@@ -468,17 +468,18 @@
             "DECIMAL",
             "HEX",
             "OCTAL"});
-            this.numbermod.Location = new System.Drawing.Point(460, 47);
+            this.numbermod.Location = new System.Drawing.Point(472, 47);
             this.numbermod.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.numbermod.Name = "numbermod";
-            this.numbermod.Size = new System.Drawing.Size(65, 24);
+            this.numbermod.Size = new System.Drawing.Size(98, 24);
             this.numbermod.TabIndex = 18;
+            this.numbermod.Text = "BINARY";
             this.numbermod.SelectedIndexChanged += new System.EventHandler(this.numbermod_SelectedIndexChanged);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(165, 123);
+            this.label10.Location = new System.Drawing.Point(160, 126);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(29, 17);
             this.label10.TabIndex = 17;
@@ -496,7 +497,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(157, 47);
+            this.label8.Location = new System.Drawing.Point(160, 47);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(36, 17);
             this.label8.TabIndex = 15;
@@ -505,7 +506,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(5, 123);
+            this.label7.Location = new System.Drawing.Point(11, 123);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(34, 17);
             this.label7.TabIndex = 14;
@@ -531,7 +532,7 @@
             // 
             // irtext
             // 
-            this.irtext.Location = new System.Drawing.Point(195, 123);
+            this.irtext.Location = new System.Drawing.Point(199, 123);
             this.irtext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.irtext.Name = "irtext";
             this.irtext.Size = new System.Drawing.Size(100, 22);
@@ -539,7 +540,7 @@
             // 
             // sptext
             // 
-            this.sptext.Location = new System.Drawing.Point(195, 82);
+            this.sptext.Location = new System.Drawing.Point(200, 82);
             this.sptext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.sptext.Name = "sptext";
             this.sptext.Size = new System.Drawing.Size(100, 22);
@@ -547,7 +548,7 @@
             // 
             // drtext
             // 
-            this.drtext.Location = new System.Drawing.Point(195, 47);
+            this.drtext.Location = new System.Drawing.Point(199, 44);
             this.drtext.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.drtext.Name = "drtext";
             this.drtext.Size = new System.Drawing.Size(100, 22);
@@ -606,7 +607,7 @@
             this.button1.BackColor = System.Drawing.Color.LightGray;
             this.button1.ForeColor = System.Drawing.Color.Blue;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(875, 54);
+            this.button1.Location = new System.Drawing.Point(892, 48);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(71, 62);
@@ -617,9 +618,9 @@
             // runMicro
             // 
             this.runMicro.Image = ((System.Drawing.Image)(resources.GetObject("runMicro.Image")));
-            this.runMicro.Location = new System.Drawing.Point(875, 122);
+            this.runMicro.Location = new System.Drawing.Point(892, 120);
             this.runMicro.Name = "runMicro";
-            this.runMicro.Size = new System.Drawing.Size(71, 55);
+            this.runMicro.Size = new System.Drawing.Size(71, 62);
             this.runMicro.TabIndex = 10;
             this.runMicro.UseVisualStyleBackColor = true;
             this.runMicro.Click += new System.EventHandler(this.runMicro_Click);
@@ -639,10 +640,11 @@
             this.Controls.Add(this.codeList);
             this.Controls.Add(this.menuStrip1);
             this.ForeColor = System.Drawing.Color.Black;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
             this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
-            this.Text = "DSSM";
+            this.Text = " DSSM";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -666,7 +668,7 @@
         private System.Windows.Forms.ToolStripMenuItem menuToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem openFileToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem extractToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem exportToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem resetToolStripMenuItem;
         private System.Windows.Forms.ListBox codeList;
         private System.Windows.Forms.DataGridView codeSegmentView;
