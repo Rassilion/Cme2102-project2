@@ -67,21 +67,24 @@ namespace Dssem
         }
         public string nextMicroOp()
         {
+            string op = "";
             if (SC == 0)
             {
                 fetch();
+                op = "fetch";
             }
             else if (SC == 1)
             {
                 decode();
+                op = "decode";
             }
             else if (SC == 2)
             {
-                T2();
+                op = T2();
             }
             else if (SC == 3)
             {
-                T3();
+                op = T3();
             }
             else if (SC == 4)
             {
@@ -93,7 +96,7 @@ namespace Dssem
             }
 
 
-            return "";
+            return op;
         }
 
         public void fetch()
@@ -111,9 +114,6 @@ namespace Dssem
             AR.Load((IR.getData()).Substring(5, 4));
             decodeIR();
             incSC();
-
-
-
         }
         //Memory Reference
         public void decodeIR()
@@ -131,9 +131,9 @@ namespace Dssem
 
         }
 
-        public void T2()
+        public string T2()
         {
-
+            string op = "";
             if (r == 1)
             {
                 if (b == 0)
@@ -143,6 +143,7 @@ namespace Dssem
                     {
                         PC.Increment();
                     }
+                    op = "sze";
                 }
                 else if (b == 1)
                 {
@@ -202,13 +203,16 @@ namespace Dssem
             else if (d != 0 && I == "1")//indirect
             {
                 AR.Load(dataSegment[AR.getDataInt()].data);
+                op = "indricted";
             }
 
             incSC();
+            return op;
         }
 
-        public void T3()
+        public string T3()
         {
+            string op = "";
             if (d == 1)
             {
                 //OR
@@ -231,8 +235,9 @@ namespace Dssem
             }
             else if (d == 5)
             {
-                //CDA
+                //LDA
                 DR.Load(dataSegment[AR.getDataInt()].data);//D5T3
+                op = "LDA";
             }
             else if (d == 6)
             {
@@ -258,6 +263,7 @@ namespace Dssem
                 DR.Load(dataSegment[AR.getDataInt()].data);//D15T3
             }
             incSC();
+            return op;
         }
         public void memoryOR()
         {   //OR

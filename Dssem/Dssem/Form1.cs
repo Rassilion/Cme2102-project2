@@ -291,7 +291,7 @@ namespace Dssem
             codeList.SelectedIndex = index;
             parse(codeList.Items[index].ToString());
             index++;
-            dssm.nextMicroOp();
+            mop.Text= dssm.nextMicroOp();
             updateForm();
         }
 
