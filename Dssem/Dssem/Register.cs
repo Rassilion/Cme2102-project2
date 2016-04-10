@@ -76,6 +76,63 @@ namespace Dssem
         {
             return Convert.ToInt32(Util.convert(data, "BIN", "DEC"));
         }
+        public void ASHR()
+        {
+            string result = "";
+            for (int i = 0; i < size; i++)
+            {
+                if (i == 0)
+                {
+                    result += data[i];
+                }
+                else
+                {
+                    result += data[i - 1];
+                }
+            }
+            Load(result);
+        
+        }
+        public void ASHL()
+        {
+
+            string result = "";
+            for (int i = 0; i < size; i++)
+            {
+                if (i == data.Length - 1)
+                {
+                    result += 0;
+                }
+                else
+                {
+                    result += data[i + 1];
+                }
+            }
+            Load(result);
+        
+        
+        }
+        public void Complement()
+        {
+            string result = "";
+            for (int i = 0; i < size; i++)
+            {
+                if (data[i] == '0')
+                {
+                    result += "1";
+                }
+                else {
+                   
+                        result += "0";
+                    
+                }
+
+
+                
+            }
+        
+        
+        }
        
         //clr load fonksiyonları
     }

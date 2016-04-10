@@ -292,7 +292,8 @@ namespace Dssem
             codeList.SelectedIndex = index;
             parse(codeList.Items[index].ToString());
             index++;
-
+            mop.Text= dssm.nextMicroOp();
+            updateForm();
         }
 
         private void numbermod_SelectedIndexChanged(object sender, EventArgs e)
