@@ -217,6 +217,47 @@ namespace Dssem
             }
             SC = 0;
             //D15T5
+            //Register Reference
+
+            //SZE
+           if (E == 0)//rB0
+           {
+               PC.Increment();
+           }
+            //CLA
+           AC.Clear();//rB1
+            //SZA
+           if (AC.getData() == "000000000")//rB2
+           {
+               PC.Increment();
+           }
+            //SNA 
+           if (AC.getData().Substring(0, 1) == "1")//rB3
+           {
+               PC.Increment();
+           }
+            //CMA
+            //ac ac compl at //rB4
+            //INC
+           AC.Increment();//rB5
+            //ASHR
+            // ac shift right ac at//rB7
+            //ASHL
+            //AC shift left ac at //rB8
+            //HLT
+           SC = 0;//rB9
+
+            //ınput output Reference
+
+
+            //INP
+            //pB7 or pB15
+            //ınpr ac at
+
+            //Stack Reference
+            //push
+            //pB1 or pB8
+
 
 
 
