@@ -606,10 +606,10 @@
             this.button1.BackColor = System.Drawing.Color.LightGray;
             this.button1.ForeColor = System.Drawing.Color.Blue;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(852, 56);
+            this.button1.Location = new System.Drawing.Point(875, 54);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(46, 46);
+            this.button1.Size = new System.Drawing.Size(71, 62);
             this.button1.TabIndex = 9;
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
@@ -617,9 +617,9 @@
             // runMicro
             // 
             this.runMicro.Image = ((System.Drawing.Image)(resources.GetObject("runMicro.Image")));
-            this.runMicro.Location = new System.Drawing.Point(916, 56);
+            this.runMicro.Location = new System.Drawing.Point(875, 122);
             this.runMicro.Name = "runMicro";
-            this.runMicro.Size = new System.Drawing.Size(47, 46);
+            this.runMicro.Size = new System.Drawing.Size(71, 55);
             this.runMicro.TabIndex = 10;
             this.runMicro.UseVisualStyleBackColor = true;
             this.runMicro.Click += new System.EventHandler(this.runMicro_Click);
