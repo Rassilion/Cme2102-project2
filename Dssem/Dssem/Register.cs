@@ -15,36 +15,36 @@ namespace Dssem
         public Register(string data, int size)
         {
             this.size = size;
-            Load(data);            
+            Load(data);
         }
         public void Load(string data)
         {
             if (data.Length > size)
             {
-                this.data = data.Substring(data.Length - size, size-1);
+                this.data = data.Substring(data.Length - size, size - 1);
             }
             else {
-                this.data = Util.expandBit(data,size);
+                this.data = Util.expandBit(data, size);
             }
-         
+
         }
 
         public void Increment()
         {
-            string number; 
-            number = Util.convert(data,"BIN","DEC");
-            long num = Convert.ToInt64(number)+1;
+            string number;
+            number = Util.convert(data, "BIN", "DEC");
+            long num = Convert.ToInt64(number) + 1;
             if (Math.Pow(2, size) < num)
             {
-                number = Util.convert(Convert.ToString(num),"DEC","BIN");
-                Load( Util.expandBit("0",size));
+                number = Util.convert(Convert.ToString(num), "DEC", "BIN");
+                Load(Util.expandBit("0", size));
             }
             else {
-                number = Util.convert(Convert.ToString(num),"DEC","BIN");
+                number = Util.convert(Convert.ToString(num), "DEC", "BIN");
                 Load(number);
             }
-            
-        
+
+
         }
         public void Clear()
         {
@@ -58,13 +58,13 @@ namespace Dssem
             if (num < 0)
             {
                 number = Util.convert(Convert.ToString(num), "DEC", "BIN");
-               Load( number.Substring(number.Length - size, number.Length-1));
+                Load(number.Substring(number.Length - size, number.Length - 1));
             }
             else {
                 number = Util.convert(Convert.ToString(num), "DEC", "BIN");
                 Load(number);
             }
-            
+
 
 
         }
@@ -91,7 +91,7 @@ namespace Dssem
                 }
             }
             Load(result);
-        
+
         }
         public void ASHL()
         {
@@ -109,8 +109,8 @@ namespace Dssem
                 }
             }
             Load(result);
-        
-        
+
+
         }
         public void Complement()
         {
@@ -122,18 +122,11 @@ namespace Dssem
                     result += "1";
                 }
                 else {
-                   
-                        result += "0";
-                    
+                    result += "0";
                 }
-
-
-                
             }
-        
-        
+            Load(result);
         }
-       
-        //clr load fonksiyonları
+        
     }
 }

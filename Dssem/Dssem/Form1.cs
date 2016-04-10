@@ -286,7 +286,7 @@ namespace Dssem
         }
 
 
-        int index = 0;
+        int index = 1;
         private void button1_Click(object sender, EventArgs e)
         {
             codeList.SelectedIndex = index;

@@ -95,6 +95,13 @@ namespace Dssem
 
         }
 
+        public Memory()
+        {
+            i = "0";
+            opcode = "0000";
+            data = "0000";
+        }
+
         public string ToString()
         {
             return i +""+ opcode + "" + data;
