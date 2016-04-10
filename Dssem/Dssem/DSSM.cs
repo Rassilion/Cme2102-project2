@@ -257,7 +257,25 @@ namespace Dssem
             //Stack Reference
             //push
             //pB1 or pB8
-
+           SP.Increment();
+           stackSegment[SP.getDataInt()].data = DR.getData();
+            //Pop
+            //pB2 or pB10
+           DR.Load(stackSegment[SP.getDataInt()].data);
+           SP.Decrement();
+            //Size Empty
+            //pB3 or pB11
+           if (SP.getDataInt() == 0)
+           {
+               PC.Increment();
+           }
+            //size full
+            //pB4 or pB12
+           if (SP.getDataInt()==0)
+           {
+               PC.Increment();
+           
+           }
 
 
 
