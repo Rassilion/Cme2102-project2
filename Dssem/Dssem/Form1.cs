@@ -120,8 +120,8 @@ namespace Dssem
             {
                 labeltable.Items.Add(entry.Key + " " + Util.convert(entry.Value, "BIN", showValue));//gui
             }
-          
-           
+
+
 
         }
 
@@ -179,7 +179,7 @@ namespace Dssem
                     else if (splited[i].Contains(','))
                     {
                         splited[i] = splited[i].Remove(splited[i].Length - 1);
-                      
+
                         dssm.labelTable.Add(splited[i], Util.convert(Convert.ToString(d_index), "DEC", "BIN"));//add label adress to label table
                         dssm.dataSegment[d_index] = new Memory("0", "0000", Util.convert(splited[i + 2], splited[i + 1], "BIN"));//add label's initial value to data memory
                         d_index++;
@@ -292,7 +292,7 @@ namespace Dssem
             codeList.SelectedIndex = index;
             parse(codeList.Items[index].ToString());
             index++;
-            mop.Text= dssm.nextMicroOp();
+            mop.Text = dssm.nextInstruction();
             updateForm();
         }
 
@@ -322,7 +322,12 @@ namespace Dssem
 
         private void runMicro_Click(object sender, EventArgs e)
         {
-            dssm.nextMicroOp();
+            mop.Text = dssm.nextMicroOp();
+            if (dssm.SC == 0)
+            {
+                index++;
+            }
+            updateForm();
         }
     }
 }

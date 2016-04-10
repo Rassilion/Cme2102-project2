@@ -90,7 +90,7 @@ namespace Dssem
             }
             else if (SC == 4)
             {
-
+                SC = 0;
             }
             else if (SC == 5)
             {
@@ -135,7 +135,7 @@ namespace Dssem
 
         public string T2()
         {
-            string op = "";
+            string op = "emtpy";
             if (r == 1)
             {
                 if (b == 0)
@@ -205,7 +205,7 @@ namespace Dssem
             else if (d != 0 && I == "1")//indirect
             {
                 AR.Load(dataSegment[AR.getDataInt()].data);
-                op = "indricted";
+                op = "indirect";
             }
 
             incSC();
