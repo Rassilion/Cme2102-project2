@@ -57,13 +57,15 @@ namespace Dssem
                 SC = 0;
             }
         }
-        public void nextInstruction()
+        public string nextInstruction()
         {
+            string op="";
             do
             {
-                nextMicroOp();
+                op+=nextMicroOp()+"\n";
             } while (SC != 0);
 
+            return op;
         }
         public string nextMicroOp()
         {
