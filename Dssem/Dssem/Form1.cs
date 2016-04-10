@@ -120,6 +120,7 @@ namespace Dssem
             {
                 labeltable.Items.Add(entry.Key + " " + Util.convert(entry.Value, "BIN", showValue));//gui
             }
+          
            
 
         }
@@ -317,6 +318,11 @@ namespace Dssem
                 showValue = "OCT";
                 updateForm();
             }
+        }
+
+        private void runMicro_Click(object sender, EventArgs e)
+        {
+            dssm.nextMicroOp();
         }
     }
 }

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.menuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -81,6 +82,7 @@
             this.mop = new System.Windows.Forms.Label();
             this.labeltable = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
+            this.runMicro = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeSegmentView)).BeginInit();
             this.Memory.SuspendLayout();
@@ -118,20 +120,20 @@
             // openFileToolStripMenuItem
             // 
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.openFileToolStripMenuItem.Text = "Open File";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
             // extractToolStripMenuItem
             // 
             this.extractToolStripMenuItem.Name = "extractToolStripMenuItem";
-            this.extractToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.extractToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.extractToolStripMenuItem.Text = "Extract";
             // 
             // resetToolStripMenuItem
             // 
             this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.resetToolStripMenuItem.Text = "Reset";
             // 
             // aboutToolStripMenuItem
@@ -570,11 +572,11 @@
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.mop);
-            this.groupBox2.Location = new System.Drawing.Point(957, 54);
+            this.groupBox2.Location = new System.Drawing.Point(969, 54);
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(292, 158);
+            this.groupBox2.Size = new System.Drawing.Size(292, 171);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Micro operation";
@@ -582,7 +584,7 @@
             // mop
             // 
             this.mop.AutoSize = true;
-            this.mop.Location = new System.Drawing.Point(8, 23);
+            this.mop.Location = new System.Drawing.Point(7, 29);
             this.mop.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.mop.Name = "mop";
             this.mop.Size = new System.Drawing.Size(54, 17);
@@ -601,16 +603,26 @@
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ScrollBar;
+            this.button1.BackColor = System.Drawing.Color.LightGray;
             this.button1.ForeColor = System.Drawing.Color.Blue;
-            this.button1.Location = new System.Drawing.Point(852, 58);
+            this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
+            this.button1.Location = new System.Drawing.Point(875, 54);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(85, 60);
+            this.button1.Size = new System.Drawing.Size(71, 62);
             this.button1.TabIndex = 9;
-            this.button1.Text = "Read Next-->";
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // runMicro
+            // 
+            this.runMicro.Image = ((System.Drawing.Image)(resources.GetObject("runMicro.Image")));
+            this.runMicro.Location = new System.Drawing.Point(875, 122);
+            this.runMicro.Name = "runMicro";
+            this.runMicro.Size = new System.Drawing.Size(71, 55);
+            this.runMicro.TabIndex = 10;
+            this.runMicro.UseVisualStyleBackColor = true;
+            this.runMicro.Click += new System.EventHandler(this.runMicro_Click);
             // 
             // Form1
             // 
@@ -618,6 +630,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
             this.ClientSize = new System.Drawing.Size(1261, 673);
+            this.Controls.Add(this.runMicro);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labeltable);
             this.Controls.Add(this.groupBox2);
@@ -702,6 +715,7 @@
         private System.Windows.Forms.TextBox fgitext;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label mop;
+        private System.Windows.Forms.Button runMicro;
     }
 }
 
