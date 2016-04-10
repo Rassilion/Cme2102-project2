@@ -47,6 +47,8 @@ namespace Dssem
             codeSegmentView.Rows.Clear();
             dataSegmentView.Rows.Clear();
             stackSegmentView.Rows.Clear();
+            labeltable.Items.Clear();
+
             //code segment
             foreach (Memory cell in dssm.codeSegment)
             {
@@ -113,6 +115,12 @@ namespace Dssem
             itext.Text = Util.convert(Convert.ToString(dssm.I), "BIN", showValue);
             sctext.Text = Util.convert(Convert.ToString(dssm.SC), "BIN", showValue);
 
+            //labeltable
+            foreach (KeyValuePair<string, string> entry in dssm.labelTable)
+            {
+                labeltable.Items.Add(entry.Key + " " + Util.convert(entry.Value, "BIN", showValue));//gui
+            }
+           
 
         }
 
@@ -170,7 +178,7 @@ namespace Dssem
                     else if (splited[i].Contains(','))
                     {
                         splited[i] = splited[i].Remove(splited[i].Length - 1);
-                        labeltable.Items.Add(splited[i] + " " + splited[i + 1] + " " + splited[i + 2]);//gui
+                      
                         dssm.labelTable.Add(splited[i], Util.convert(Convert.ToString(d_index), "DEC", "BIN"));//add label adress to label table
                         dssm.dataSegment[d_index] = new Memory("0", "0000", Util.convert(splited[i + 2], splited[i + 1], "BIN"));//add label's initial value to data memory
                         d_index++;
