@@ -83,6 +83,10 @@
             this.labeltable = new System.Windows.Forms.ListBox();
             this.button1 = new System.Windows.Forms.Button();
             this.runMicro = new System.Windows.Forms.Button();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label20 = new System.Windows.Forms.Label();
+            this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.baseColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeSegmentView)).BeginInit();
             this.Memory.SuspendLayout();
@@ -102,7 +106,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1261, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1299, 28);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -111,7 +115,8 @@
             this.menuToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.openFileToolStripMenuItem,
             this.exportToolStripMenuItem,
-            this.resetToolStripMenuItem});
+            this.resetToolStripMenuItem,
+            this.baseColorToolStripMenuItem});
             this.menuToolStripMenuItem.ForeColor = System.Drawing.Color.White;
             this.menuToolStripMenuItem.Name = "menuToolStripMenuItem";
             this.menuToolStripMenuItem.Size = new System.Drawing.Size(58, 24);
@@ -129,14 +134,14 @@
             // 
             this.exportToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exportToolStripMenuItem.Image")));
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.exportToolStripMenuItem.Text = "Export";
             // 
             // resetToolStripMenuItem
             // 
             this.resetToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("resetToolStripMenuItem.Image")));
             this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
             this.resetToolStripMenuItem.Text = "Reset";
             // 
             // aboutToolStripMenuItem
@@ -150,7 +155,7 @@
             // 
             this.codeList.FormattingEnabled = true;
             this.codeList.ItemHeight = 16;
-            this.codeList.Location = new System.Drawing.Point(0, 46);
+            this.codeList.Location = new System.Drawing.Point(0, 83);
             this.codeList.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.codeList.Name = "codeList";
             this.codeList.Size = new System.Drawing.Size(281, 340);
@@ -161,12 +166,14 @@
             this.codeSegmentView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.codeSegmentView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.value});
+            this.codeSegmentView.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.codeSegmentView.Location = new System.Drawing.Point(15, 59);
             this.codeSegmentView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.codeSegmentView.Name = "codeSegmentView";
             this.codeSegmentView.RowHeadersWidth = 70;
             this.codeSegmentView.RowTemplate.Height = 24;
             this.codeSegmentView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.codeSegmentView.ShowEditingIcon = false;
             this.codeSegmentView.Size = new System.Drawing.Size(251, 347);
             this.codeSegmentView.TabIndex = 3;
             // 
@@ -189,7 +196,7 @@
             this.Memory.Controls.Add(this.label3);
             this.Memory.Controls.Add(this.label2);
             this.Memory.Controls.Add(this.codeSegmentView);
-            this.Memory.Location = new System.Drawing.Point(287, 250);
+            this.Memory.Location = new System.Drawing.Point(301, 251);
             this.Memory.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Memory.Name = "Memory";
             this.Memory.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -580,7 +587,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.groupBox2.Size = new System.Drawing.Size(292, 171);
+            this.groupBox2.Size = new System.Drawing.Size(330, 171);
             this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Micro operation";
@@ -598,7 +605,7 @@
             // 
             this.labeltable.FormattingEnabled = true;
             this.labeltable.ItemHeight = 16;
-            this.labeltable.Location = new System.Drawing.Point(33, 416);
+            this.labeltable.Location = new System.Drawing.Point(27, 485);
             this.labeltable.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.labeltable.Name = "labeltable";
             this.labeltable.Size = new System.Drawing.Size(195, 148);
@@ -609,7 +616,7 @@
             this.button1.BackColor = System.Drawing.Color.LightGray;
             this.button1.ForeColor = System.Drawing.Color.Blue;
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
-            this.button1.Location = new System.Drawing.Point(892, 48);
+            this.button1.Location = new System.Drawing.Point(892, 61);
             this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(71, 62);
@@ -620,19 +627,49 @@
             // runMicro
             // 
             this.runMicro.Image = ((System.Drawing.Image)(resources.GetObject("runMicro.Image")));
-            this.runMicro.Location = new System.Drawing.Point(892, 120);
+            this.runMicro.Location = new System.Drawing.Point(892, 139);
             this.runMicro.Name = "runMicro";
             this.runMicro.Size = new System.Drawing.Size(71, 62);
             this.runMicro.TabIndex = 10;
             this.runMicro.UseVisualStyleBackColor = true;
             this.runMicro.Click += new System.EventHandler(this.runMicro_Click);
             // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label19.Location = new System.Drawing.Point(101, 48);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(58, 20);
+            this.label19.TabIndex = 20;
+            this.label19.Text = "Code ";
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Underline))), System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label20.Location = new System.Drawing.Point(68, 452);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(107, 20);
+            this.label20.TabIndex = 21;
+            this.label20.Text = "Label Table";
+            // 
+            // baseColorToolStripMenuItem
+            // 
+            this.baseColorToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("baseColorToolStripMenuItem.Image")));
+            this.baseColorToolStripMenuItem.Name = "baseColorToolStripMenuItem";
+            this.baseColorToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.baseColorToolStripMenuItem.Text = "Base color";
+            this.baseColorToolStripMenuItem.Click += new System.EventHandler(this.baseColorToolStripMenuItem_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.GradientActiveCaption;
-            this.ClientSize = new System.Drawing.Size(1261, 673);
+            this.ClientSize = new System.Drawing.Size(1299, 673);
+            this.Controls.Add(this.label20);
+            this.Controls.Add(this.label19);
             this.Controls.Add(this.runMicro);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.labeltable);
@@ -644,7 +681,7 @@
             this.ForeColor = System.Drawing.Color.Black;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip1;
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = " DSSM";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -720,6 +757,10 @@
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label mop;
         private System.Windows.Forms.Button runMicro;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label label20;
+        private System.Windows.Forms.ToolStripMenuItem baseColorToolStripMenuItem;
+        private System.Windows.Forms.ColorDialog colorDialog1;
     }
 }
 

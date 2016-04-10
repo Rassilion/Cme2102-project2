@@ -23,7 +23,7 @@ namespace Dssem
 
         public int E = 0;
         public int SC = 0;
-        public int S = 1;
+        public int S = 0;
         public string I = "0";
         public int FGI = 0;
         public int d;

@@ -81,6 +81,10 @@ namespace Dssem
             foreach (DataGridViewRow row in dataSegmentView.Rows)
             {
                 dataSegmentView.Rows[row.Index].HeaderCell.Value = (row.Index).ToString();
+                if (dssm.AR.getDataInt() == row.Index)
+                {
+                    row.Selected = true;
+                }
             }
 
             //stack segment
@@ -96,6 +100,10 @@ namespace Dssem
             foreach (DataGridViewRow row in stackSegmentView.Rows)
             {
                 stackSegmentView.Rows[row.Index].HeaderCell.Value = (row.Index).ToString();
+                if (dssm.SP.getDataInt() == row.Index)
+                {
+                    row.Selected = true;
+                }
             }
 
             //registers
@@ -113,7 +121,7 @@ namespace Dssem
             fgitext.Text = Util.convert(Convert.ToString(dssm.FGI), "BIN", showValue);
             stext.Text = Util.convert(Convert.ToString(dssm.S), "BIN", showValue);
             itext.Text = Util.convert(Convert.ToString(dssm.I), "BIN", showValue);
-            sctext.Text = Util.convert(Convert.ToString(dssm.SC), "BIN", showValue);
+            sctext.Text = Util.convert(Convert.ToString(dssm.SC), "DEC", showValue);
 
             //labeltable
             foreach (KeyValuePair<string, string> entry in dssm.labelTable)
@@ -140,6 +148,7 @@ namespace Dssem
                         codeList.Items.Add(line);
                     }
                 }
+                dssm.S = 1;
             }
             catch (ArgumentException e)
             {
@@ -300,14 +309,14 @@ namespace Dssem
                 parse(codeList.Items[index].ToString());
                 index++;
                 mop.Text = dssm.nextInstruction();
-                updateForm();
+                
             }
             catch (ArgumentOutOfRangeException A)
             {
                 MessageBox.Show("File error","ERROR !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
                
             }
-           
+            updateForm();
         }
 
         private void numbermod_SelectedIndexChanged(object sender, EventArgs e)
@@ -336,15 +345,30 @@ namespace Dssem
 
         private void runMicro_Click(object sender, EventArgs e)
         {
-            mop.Text = dssm.nextMicroOp();
-            codeList.SelectedIndex = index;
-            if (dssm.SC == 0&&dssm.S==1)
+            try
             {
-                
-                index++;
-            }
+                mop.Text = dssm.nextMicroOp();
+                codeList.SelectedIndex = index;
+                if (dssm.SC == 0 && dssm.S == 1)
+                {
 
+                    index++;
+                }
+
+                
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Error");
+               
+            }
             updateForm();
+        }
+
+        private void baseColorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            colorDialog1.ShowDialog();
+            this.BackColor = colorDialog1.Color;
         }
     }
 }
