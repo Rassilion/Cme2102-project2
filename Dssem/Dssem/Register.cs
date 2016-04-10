@@ -112,6 +112,27 @@ namespace Dssem
         
         
         }
+        public void Complement()
+        {
+            string result = "";
+            for (int i = 0; i < size; i++)
+            {
+                if (data[i] == '0')
+                {
+                    result += "1";
+                }
+                else {
+                   
+                        result += "0";
+                    
+                }
+
+
+                
+            }
+        
+        
+        }
        
         //clr load fonksiyonları
     }
