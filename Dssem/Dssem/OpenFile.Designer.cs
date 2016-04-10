@@ -37,27 +37,28 @@
             // 
             // filetext
             // 
-            this.filetext.Location = new System.Drawing.Point(83, 89);
+            this.filetext.Location = new System.Drawing.Point(98, 89);
             this.filetext.Name = "filetext";
-            this.filetext.Size = new System.Drawing.Size(190, 22);
+            this.filetext.Size = new System.Drawing.Size(244, 22);
             this.filetext.TabIndex = 0;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(320, 73);
+            this.button1.Location = new System.Drawing.Point(377, 81);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(111, 55);
+            this.button1.Size = new System.Drawing.Size(70, 39);
             this.button1.TabIndex = 1;
-            this.button1.Text = "Select File";
+            this.button1.Text = "Browse";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(80, 56);
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label1.Location = new System.Drawing.Point(167, 42);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(82, 17);
+            this.label1.Size = new System.Drawing.Size(111, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Chose File :";
             // 
@@ -73,7 +74,6 @@
             // 
             // openFileDialog1
             // 
-            this.openFileDialog1.FileName = "openFileDialog1";
             this.openFileDialog1.FileOk += new System.ComponentModel.CancelEventHandler(this.openFileDialog1_FileOk);
             // 
             // OpenFile

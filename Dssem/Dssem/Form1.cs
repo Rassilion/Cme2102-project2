@@ -146,6 +146,11 @@ namespace Dssem
                 MessageBox.Show("Wrong input");
 
             }
+            catch (FileNotFoundException e)
+            {
+                MessageBox.Show("File not Found","ERROR !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }   
+                  
 
 
 
@@ -332,10 +337,13 @@ namespace Dssem
         private void runMicro_Click(object sender, EventArgs e)
         {
             mop.Text = dssm.nextMicroOp();
-            if (dssm.SC == 0)
+            codeList.SelectedIndex = index;
+            if (dssm.SC == 0&&dssm.S==1)
             {
+                
                 index++;
             }
+
             updateForm();
         }
     }

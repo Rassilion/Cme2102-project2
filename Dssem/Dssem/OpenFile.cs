@@ -23,13 +23,15 @@ namespace Dssem
             //Browse file
 
             openFileDialog1.Title = " Please select the assembly file ";
+           
+            openFileDialog1.Filter = "ASM files (*.asm) |*.asm|BASM files (*.basm)|*.basm";
 
-            openFileDialog1.Filter = " (*.asm) | *.asm | (*.basm) | *.basm ";
-
+            
+            openFileDialog1.RestoreDirectory = true;
+            openFileDialog1.FilterIndex = 1;
             openFileDialog1.ShowDialog();
-
             filetext.Text = openFileDialog1.FileName;
-
+            
             if (filetext.Text == "") return;
             else Form1.filePath = filetext.Text;
 

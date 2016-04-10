@@ -119,6 +119,7 @@
             // 
             // openFileToolStripMenuItem
             // 
+            this.openFileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openFileToolStripMenuItem.Image")));
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
             this.openFileToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.openFileToolStripMenuItem.Text = "Open File";
@@ -126,12 +127,14 @@
             // 
             // exportToolStripMenuItem
             // 
+            this.exportToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exportToolStripMenuItem.Image")));
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
             this.exportToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.exportToolStripMenuItem.Text = "Export";
             // 
             // resetToolStripMenuItem
             // 
+            this.resetToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("resetToolStripMenuItem.Image")));
             this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
             this.resetToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.resetToolStripMenuItem.Text = "Reset";
@@ -588,9 +591,8 @@
             this.mop.Location = new System.Drawing.Point(7, 29);
             this.mop.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.mop.Name = "mop";
-            this.mop.Size = new System.Drawing.Size(54, 17);
+            this.mop.Size = new System.Drawing.Size(0, 17);
             this.mop.TabIndex = 0;
-            this.mop.Text = "label19";
             // 
             // labeltable
             // 

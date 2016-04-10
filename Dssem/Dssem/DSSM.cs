@@ -92,12 +92,12 @@ namespace Dssem
                 if (SC == 0)
                 {
                     fetch();
-                    op = "fetch";
+                    op = "T0:IR <- M[PC]";
                 }
                 else if (SC == 1)
                 {
                     decode();
-                    op = "decode";
+                    op = "T1 :D0…D15 IR(4..7)  , AR <- IR(0..3)  ,PC <-PC+1 ,I <- IR(8)";
                 }
                 else if (SC == 2)
                 {
@@ -165,13 +165,13 @@ namespace Dssem
                     {
                         PC.Increment();
                     }
-                    op = "sze";
+                    op = "SZE  :rB0 if(E==0) then PC<-PC+1";
                 }
                 else if (b == 1)
                 {
                     //CLA
                     AC.Clear();
-                    op = "cla";
+                    op = "CLA :rB1 AC <-0";
                 }
                 else if (b == 2)
                 {
@@ -180,7 +180,7 @@ namespace Dssem
                     {
                         PC.Increment();
                     }
-                    op = "sza";
+                    op = "SZA : rB2 if(AC==0) then PC <-PC+1";
                 }
                 else if (b == 3)
                 {
@@ -189,37 +189,37 @@ namespace Dssem
                     {
                         PC.Increment();
                     }
-                    op = "sna";
+                    op = "SNA :rB3 if(AC(8)==1)then PC<-PC+1";
                 }
                 else if (b == 4)
                 {
                     //CMA
                     AC.Complement();
-                    op = "comp";
+                    op = "CMA :rB4 AC <-AC’";
                 }
                 else if (b == 5)
                 {
                     //INC
                     AC.Increment();
-                    op = "inc";
+                    op = "INC : rB5 AC <- AC+1";
                 }
                 else if (b == 7)
                 {
                     //ASHR
                     AC.ASHR();
-                    op = "ashr";
+                    op = "ASHR : rB7  AC <- ShiftRight(AC)";
                 }
                 else if (b == 8)
                 {
                     //ASHL
                     AC.ASHL();
-                    op = "ashl";
+                    op = "ASHL :rB8 AC <- ShiftLeft(AC)";
                 }
                 else if (b == 9)
                 {
                     //HLT
                     S = 0;//rB9
-                    op = "hlt";
+                    op = "HLT : rB9 S <- 0";
                 }
 
                 SC = 0;
@@ -231,16 +231,19 @@ namespace Dssem
                     AC.Load(INPR.getData());
                     FGI = 0;
                     SC = 0;
+                    op = "INP pB7 | pB15 : AC(0..7) <-INPR FGI <-0";
                 }
                 else if (b == 1 || b == 8)
                 {
                     SP.Increment();
                     incSC();
+                    op = "Push : pB1 | pB8 SP<-SP+1 ";
                 }
                 else if (b == 2 || b == 10)
                 {
                     DR.Load(stackSegment[SP.getDataInt()].data);
                     incSC();
+                    op = "Pop: pB2 | pB10 DR <-Stack[SP] ";
                 }
                 else if (b == 3 || b == 11)
                 {
@@ -249,6 +252,7 @@ namespace Dssem
                         PC.Increment();
                     }
                     SC = 0;
+                    op = "SizeEmpty:pB3 | pB11 if(SP=0) then PC<-PC+1";
                 }
                 else if (b == 4 || b == 12)
                 {
@@ -258,13 +262,15 @@ namespace Dssem
 
                     }
                     SC = 0;
+                    op = "SizeFull :pB4 | pB12 if(SP=7) then PC <-PC+1";
                 }
             }
             else if (d != 0 && I == "1")//indirect
             {
                 AR.Load(dataSegment[AR.getDataInt()].data);
-                op = "indirect";
+              
                 incSC();
+                op = "Indirect :D0’IT2  :AR <- M[AR]";
             }
             else
             {
@@ -285,46 +291,49 @@ namespace Dssem
                 {
                     stackSegment[SP.getDataInt()].data = DR.getData();
                     SC = 0;
+                    op = " Stack[SP] < -DR";
                 }
                 else if (b == 2 || b == 10)
                 {
                     SP.Decrement();
                     SC = 0;
+                    op = " SP <- SP-1";
                 }
+                
             }
             else if (d == 1)
             {
                 //OR
                 DR.Load(dataSegment[AR.getDataInt()].data);//D1T3
                 incSC();
-                op = "or";
+                op = "DR <- M[AR] ";
             }
             else if (d == 2)
             {
                 //AND
                 DR.Load(dataSegment[AR.getDataInt()].data);//D2T3
                 incSC();
-                op = "and";
+                op = "DR<-M[AR]";
             }
             else if (d == 3)
             {
                 //XOR
                 DR.Load(dataSegment[AR.getDataInt()].data);//D3T3
                 incSC();
-                op = "xor";
+                op = "DR<-M[AR]";
             }
             else if (d == 4)
             {
                 //ADD
                 DR.Load(dataSegment[AR.getDataInt()].data);//D4T3
                 incSC();
-                op = "add";
+                op = "DR<-M[AR]";
             }
             else if (d == 5)
             {
                 //LDA
                 DR.Load(dataSegment[AR.getDataInt()].data);//D5T3
-                op = "LDA";
+                op = "DR<-M[AR]";
                 incSC();
             }
             else if (d == 6)
@@ -332,14 +341,14 @@ namespace Dssem
                 //STA
                 dataSegment[AR.getDataInt()].data = AC.getData();
                 SC = 0;
-                op = "sta";
+                op = "M[AR] <- AC SC <-0";
             }
             else if (d == 8)
             {
                 //BUN
                 PC.Load(AR.getData());
                 SC = 0;
-                op = "bun";
+                op = "PC <- AR SC <-0";
             }
             else if (d == 9)
             {
@@ -347,12 +356,14 @@ namespace Dssem
                 dataSegment[AR.getDataInt()].data = PC.getData();
                 AR.Increment();//D9T3
                 incSC();
+                op = "M[SP] <- PC , SC<-0 ";
             }
             else if (d == 15)
             {
                 //ISZ
                 DR.Load(dataSegment[AR.getDataInt()].data);//D15T3
                 incSC();
+                op = ":  DR <- M[AR] ";
             }
 
             return op;
@@ -366,42 +377,47 @@ namespace Dssem
                 //OR
                 AC.Load(Util.convert(Convert.ToString(AC.getDataInt() | DR.getDataInt()), "DEC", "BIN"));
                 SC = 0; //D1T4
+                op = "AC <- AC | DR ,SC <- 0";
             }
             else if (d == 2)
             {
                 //AND
                 AC.Load(Util.convert(Convert.ToString(AC.getDataInt() & DR.getDataInt()), "DEC", "BIN"));
                 SC = 0; //D2T4
+                op = "AC <- AC ^ DR , SC <-0";
             }
             else if (d == 3)
             {
                 //XOR
                 AC.Load(Util.convert(Convert.ToString(AC.getDataInt() ^ DR.getDataInt()), "DEC", "BIN"));
                 SC = 0; //D3T4
+                op = "AC <- AC ®DR , SC <-0";
             }
             else if (d == 4)
             {
                 //ADD
                 AC.Load(Util.convert(Convert.ToString(AC.getDataInt() + DR.getDataInt()), "DEC", "BIN"));
                 SC = 0; //D4T4
-                op = "add";
+                op = "AC <- DR+AC , E <- Cout ,SC<-0";
             }
             else if (d == 5)
             {
                 //LDA
                 AC.Load(DR.getData());
                 SC = 0;//D5T4
-                op = "LDA";
+                op = "AC <- DR , SC<-0";
             }
             else if (d == 9)
             {
                 //BSA
                 PC.Load(AR.getData()); SC = 0;//D9T4
+                op = "PC <- AR , SC <-0";
             }
             else if (d == 15)
             {
                 //ISZ
                 DR.Increment();//D15T4
+                op = "DR <- DR+1";
             }
             return op;
         }
@@ -418,6 +434,7 @@ namespace Dssem
                     PC.Increment();
                 }
                 SC = 0;
+                op = "M[AR] < -DR)  if (DR == 0) then(PC < -PC + 1) SC < -0";
                 //D15T5
             }
             return op;
