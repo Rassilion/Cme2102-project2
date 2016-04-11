@@ -81,5 +81,25 @@ namespace Dssem
 
             return result;
         }
+        public static int convertSigned(string bin)
+        {
+            double result = 0;
+
+            for (int i = 0; i < bin.Length; i++)
+            {
+                if (i == 0)
+                {
+                    result += (int)Char.GetNumericValue(bin[i]) * (-1) * (Math.Pow(2, bin.Length - 1 - i));
+
+                }
+                else
+                {
+
+                    result += (int)Char.GetNumericValue(bin[i]) * (Math.Pow(2, bin.Length - 1 - i));
+                }
+
+            }
+            return Convert.ToInt32(result);
+        }
     }
 }
