@@ -396,7 +396,7 @@ namespace Dssem
             else if (d == 4)
             {
                 //ADD
-                AC.Load(Util.convert(Convert.ToString(AC.getDataInt() + DR.getDataInt()), "DEC", "BIN"));
+                AC.Load(Util.convert(Convert.ToString(Util.convertSigned(AC.getData()) + Util.convertSigned(DR.getData())), "DEC", "BIN"));
                 SC = 0; //D4T4
                 op = "AC <- DR+AC , E <- Cout ,SC<-0";
             }
