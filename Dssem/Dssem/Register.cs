@@ -21,7 +21,7 @@ namespace Dssem
         {
             if (data.Length > size)
             {
-                this.data = data.Substring(data.Length - size, size - 1);
+                this.data = data.Substring(data.Length - size, size);
             }
             else {
                 this.data = Util.expandBit(data, size);

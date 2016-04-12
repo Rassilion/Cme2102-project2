@@ -15,9 +15,13 @@ namespace Dssem
     {
         private DSSM dssm = new DSSM();
 
+        //gui number base
         string showValue = "BIN";
-
+        //code list selected index
+        int index = 1;
+        //file path
         public static string filePath;
+
         public Form1()
         {
             InitializeComponent();
@@ -35,6 +39,9 @@ namespace Dssem
         {
             OpenFile of = new OpenFile();
             of.ShowDialog();
+            //reset dssm
+            dssm = new DSSM();
+            //parse file and update gui
             loadFile();
             parseLabel();
             parseCode();
@@ -135,6 +142,12 @@ namespace Dssem
 
         public void loadFile()
         {
+            //reset code list
+            codeList.Items.Clear();
+            //reset index
+            index = 1;
+            //reset text
+            mop.Text = "";
             try
             {
                 using (StreamReader sr = new StreamReader(filePath))
@@ -145,6 +158,12 @@ namespace Dssem
                     while ((line = sr.ReadLine()) != null)
                     {
                         line = line.Replace('\t', ' ');//remove tabs
+                        //remove double spaces
+                        line = string.Join(" ", line.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
+                        if (line == "")
+                        {
+                            continue;
+                        }
                         codeList.Items.Add(line);
                     }
                 }
@@ -157,9 +176,9 @@ namespace Dssem
             }
             catch (FileNotFoundException e)
             {
-                MessageBox.Show("File not Found","ERROR !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }   
-                  
+                MessageBox.Show("File not Found", "ERROR !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
 
 
 
@@ -170,13 +189,17 @@ namespace Dssem
             int c_index = 0, d_index = -1;
             foreach (var line in codeList.Items)
             {
-                string[] splited = line.ToString().Split(' ');
+                string[] splited = line.ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 for (int i = 0; i < splited.Length; i++)
                 {
                     if (splited[i] == "")
                         continue;
                     if (splited[i].StartsWith("%"))//comment 
                     {
+                        if (i == 0)//skipto code 
+                        {
+                            index++;
+                        }
                         break;
                     }
                     else if (!splited[i].Contains(','))//opcode
@@ -193,10 +216,21 @@ namespace Dssem
                     else if (splited[i].Contains(','))
                     {
                         splited[i] = splited[i].Remove(splited[i].Length - 1);
-
-                        dssm.labelTable.Add(splited[i], Util.convert(Convert.ToString(d_index), "DEC", "BIN"));//add label adress to label table
-                        dssm.dataSegment[d_index] = new Memory("0", "0000", Util.convert(splited[i + 2], splited[i + 1], "BIN"));//add label's initial value to data memory
-                        d_index++;
+                        if (splited[i + 1] == "DEC" || splited[i + 1] == "HEX" || splited[i + 1] == "BIN" || splited[i + 1] == "OCT")
+                        {
+                            dssm.labelTable.Add(splited[i], Util.convert(Convert.ToString(d_index), "DEC", "BIN"));//add label adress to label table
+                            dssm.dataSegment[d_index] = new Memory("0", "0000", Util.convert(splited[i + 2], splited[i + 1], "BIN"));//add label's initial value to data memory
+                            d_index++;
+                        }
+                        else
+                        {
+                            dssm.labelTable.Add(splited[i], Util.convert(Convert.ToString(c_index), "DEC", "BIN"));//add label adress to label table
+                            c_index++;
+                        }
+                    }
+                    else
+                    {
+                        c_index++;//increase code address
                     }
                 }
             }
@@ -208,7 +242,7 @@ namespace Dssem
             int c_index = 0, d_index = -1;
             foreach (var line in codeList.Items)
             {
-                string[] splited = line.ToString().Split(' ');
+                string[] splited = line.ToString().Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
                 for (int i = 0; i < splited.Length; i++)
                 {
                     if (splited[i] == "")
@@ -253,7 +287,30 @@ namespace Dssem
                     }
                     else if (splited[i].Contains(','))
                     {
-                        break;
+                        if (splited[i + 1] == "DEC" || splited[i + 1] == "HEX" || splited[i + 1] == "BIN" || splited[i + 1] == "OCT")
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            string ibit = "0", data = "0000";
+                            if (splited.Length > 3 && splited[i + 3] == "I")//opcode data I
+                            {
+                                ibit = "1";
+                                data = splited[i + 2];
+                            }
+                            else if (splited.Length > 2) //opcode with data
+                            {
+                                ibit = "0";
+                                data = splited[i + 2];
+                            }
+                            //get label adress
+                            if (dssm.labelTable.ContainsKey(data))
+                                data = dssm.labelTable[data];
+                            dssm.codeSegment[c_index] = new Memory(ibit, splited[i+1], data);
+                            c_index++;
+                            break;
+                        }
                     }
                 }
 
@@ -300,21 +357,27 @@ namespace Dssem
         }
 
 
-        int index = 1;
+
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
-                codeList.SelectedIndex = index;
-                parse(codeList.Items[index].ToString());
-                index++;
-                mop.Text = dssm.nextInstruction();
-                
+                if (dssm.S == 1)
+                {
+                    codeList.SelectedIndex = index;
+                    parse(codeList.Items[index].ToString());
+                    index++;
+                    mop.Text = dssm.nextInstruction();
+                }
+                else
+                {
+                    //TODO warning
+                }
             }
             catch (ArgumentOutOfRangeException A)
             {
-                MessageBox.Show("File error","ERROR !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
-               
+                MessageBox.Show("File error", "ERROR !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
             }
             updateForm();
         }
@@ -347,20 +410,24 @@ namespace Dssem
         {
             try
             {
-                mop.Text = dssm.nextMicroOp();
-                codeList.SelectedIndex = index;
-                if (dssm.SC == 0 && dssm.S == 1)
+                if (dssm.S == 1)
                 {
-
-                    index++;
+                    mop.Text = dssm.nextMicroOp();
+                    codeList.SelectedIndex = index;
+                    if (dssm.SC == 0)
+                    {
+                        index++;
+                    }
                 }
-
-                
+                else
+                {
+                    //TODO warning
+                }
             }
             catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("Error");
-               
+
             }
             updateForm();
         }

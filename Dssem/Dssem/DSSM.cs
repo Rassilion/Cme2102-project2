@@ -41,7 +41,8 @@ namespace Dssem
 
         public DSSM()
         {
-            Memory.initdic();
+            if (!Memory.initFlag)
+                Memory.initDic();
             for (int i = 0; i < codeSegment.Length; i++)
             {
                 codeSegment[i] = new Memory();
@@ -396,7 +397,16 @@ namespace Dssem
             else if (d == 4)
             {
                 //ADD
-                AC.Load(Util.convert(Convert.ToString(AC.getDataInt() + DR.getDataInt()), "DEC", "BIN"));
+                int result = Util.convertSigned(AC.getData()) + Util.convertSigned(DR.getData());
+                if (result < -8 || result > 7)
+                {
+                    E = 1;
+
+                }
+                else {
+                    E = 0;
+                }
+                AC.Load(Util.convert(Convert.ToString(result), "DEC", "BIN"));
                 SC = 0; //D4T4
                 op = "AC <- DR+AC , E <- Cout ,SC<-0";
             }
