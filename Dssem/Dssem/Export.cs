@@ -9,10 +9,5 @@ namespace Dssem
     class Export
     {
         //hex, mif dosyası yaratma
-
-
-
-
-
     }
 }

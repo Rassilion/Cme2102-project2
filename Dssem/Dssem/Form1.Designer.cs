@@ -126,7 +126,7 @@
             // 
             this.openFileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openFileToolStripMenuItem.Image")));
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(156, 26);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.openFileToolStripMenuItem.Text = "Open File";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
@@ -134,21 +134,22 @@
             // 
             this.exportToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exportToolStripMenuItem.Image")));
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(156, 26);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.exportToolStripMenuItem.Text = "Export";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // resetToolStripMenuItem
             // 
             this.resetToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("resetToolStripMenuItem.Image")));
             this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(156, 26);
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.resetToolStripMenuItem.Text = "Reset";
             // 
             // baseColorToolStripMenuItem
             // 
             this.baseColorToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("baseColorToolStripMenuItem.Image")));
             this.baseColorToolStripMenuItem.Name = "baseColorToolStripMenuItem";
-            this.baseColorToolStripMenuItem.Size = new System.Drawing.Size(156, 26);
+            this.baseColorToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.baseColorToolStripMenuItem.Text = "Base color";
             this.baseColorToolStripMenuItem.Click += new System.EventHandler(this.baseColorToolStripMenuItem_Click);
             // 
