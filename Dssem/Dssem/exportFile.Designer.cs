@@ -69,7 +69,6 @@
             this.choseFile.Size = new System.Drawing.Size(121, 24);
             this.choseFile.TabIndex = 4;
             this.choseFile.Text = ".mif";
-        //    this.choseFile.SelectedIndexChanged += new System.EventHandler(this.choseFile_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -129,6 +128,7 @@
             this.codeName.Name = "codeName";
             this.codeName.Size = new System.Drawing.Size(100, 22);
             this.codeName.TabIndex = 12;
+            this.codeName.Text = "code";
             // 
             // dataName
             // 
@@ -136,6 +136,7 @@
             this.dataName.Name = "dataName";
             this.dataName.Size = new System.Drawing.Size(100, 22);
             this.dataName.TabIndex = 13;
+            this.dataName.Text = "data";
             // 
             // code
             // 
@@ -152,6 +153,7 @@
             this.stackName.Name = "stackName";
             this.stackName.Size = new System.Drawing.Size(100, 22);
             this.stackName.TabIndex = 15;
+            this.stackName.Text = "stack";
             // 
             // data
             // 
