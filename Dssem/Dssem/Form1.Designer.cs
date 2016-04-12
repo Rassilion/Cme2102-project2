@@ -41,8 +41,6 @@
             this.value = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Memory = new System.Windows.Forms.GroupBox();
             this.stackSegmentView = new System.Windows.Forms.DataGridView();
-            this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.insvalue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.dataSegmentView = new System.Windows.Forms.DataGridView();
             this.datavalue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.label13 = new System.Windows.Forms.Label();
@@ -87,6 +85,7 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
+            this.insvalue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeSegmentView)).BeginInit();
             this.Memory.SuspendLayout();
@@ -126,7 +125,7 @@
             // 
             this.openFileToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("openFileToolStripMenuItem.Image")));
             this.openFileToolStripMenuItem.Name = "openFileToolStripMenuItem";
-            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.openFileToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
             this.openFileToolStripMenuItem.Text = "Open File";
             this.openFileToolStripMenuItem.Click += new System.EventHandler(this.openFileToolStripMenuItem_Click);
             // 
@@ -134,7 +133,7 @@
             // 
             this.exportToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exportToolStripMenuItem.Image")));
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
             this.exportToolStripMenuItem.Text = "Export";
             this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
@@ -142,14 +141,14 @@
             // 
             this.resetToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("resetToolStripMenuItem.Image")));
             this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
             this.resetToolStripMenuItem.Text = "Reset";
             // 
             // baseColorToolStripMenuItem
             // 
             this.baseColorToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("baseColorToolStripMenuItem.Image")));
             this.baseColorToolStripMenuItem.Name = "baseColorToolStripMenuItem";
-            this.baseColorToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.baseColorToolStripMenuItem.Size = new System.Drawing.Size(153, 26);
             this.baseColorToolStripMenuItem.Text = "Base color";
             this.baseColorToolStripMenuItem.Click += new System.EventHandler(this.baseColorToolStripMenuItem_Click);
             // 
@@ -218,7 +217,6 @@
             // 
             this.stackSegmentView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.stackSegmentView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column1,
             this.insvalue});
             this.stackSegmentView.Location = new System.Drawing.Point(551, 59);
             this.stackSegmentView.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
@@ -226,19 +224,6 @@
             this.stackSegmentView.RowTemplate.Height = 24;
             this.stackSegmentView.Size = new System.Drawing.Size(241, 347);
             this.stackSegmentView.TabIndex = 16;
-            // 
-            // Column1
-            // 
-            this.Column1.HeaderText = "Name";
-            this.Column1.Name = "Column1";
-            this.Column1.ReadOnly = true;
-            this.Column1.Width = 50;
-            // 
-            // insvalue
-            // 
-            this.insvalue.HeaderText = "Value";
-            this.insvalue.Name = "insvalue";
-            this.insvalue.ReadOnly = true;
             // 
             // dataSegmentView
             // 
@@ -663,6 +648,12 @@
             this.label20.TabIndex = 21;
             this.label20.Text = "Label Table";
             // 
+            // insvalue
+            // 
+            this.insvalue.HeaderText = "Value";
+            this.insvalue.Name = "insvalue";
+            this.insvalue.ReadOnly = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -738,8 +729,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.TextBox actext;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn insvalue;
         private System.Windows.Forms.ListBox labeltable;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.DataGridViewTextBoxColumn datavalue;
@@ -762,6 +751,7 @@
         private System.Windows.Forms.Label label20;
         private System.Windows.Forms.ToolStripMenuItem baseColorToolStripMenuItem;
         private System.Windows.Forms.ColorDialog colorDialog1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn insvalue;
     }
 }
 
