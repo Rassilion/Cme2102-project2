@@ -127,14 +127,61 @@ namespace Dssem
 
                     
                 }
+                tw.WriteLine(":00000001FF");
             }
             else if (memorytype == "D")
             {
-               
+                for (int i = 0; i < dssm.dataSegment.Length; i++)
+                {
+                    int result = 0;
+                    string address = Util.convert(Convert.ToString(i), "DEC", "HEX");
+                    address = Util.expandBit(address, 4);
+                    string data = Util.convert(dssm.dataSegment[i].ToString(), "BIN", "HEX");
+                    string writer = ":02" + address + "00" + Util.expandBit(data, 4);
+                    for (int j = 1; j <= writer.Length - 2; j += 2)
+                    {
+                        string a = writer.Substring(j, 2);
+                        result += Convert.ToInt32(Util.convert(a, "HEX", "DEC"));
+                    }
+                    result = result % 256;
+                    string b = Util.convert(Convert.ToString(result), "DEC", "BIN");
+                    b = Util.expandBit(b, 8);
+                    b = Complement(b);
+                    int k = Convert.ToInt32(Util.convert(b, "BIN", "DEC")) + 1;
+                    string t = Util.convert(Convert.ToString(k), "DEC", "BIN");
+                    t = Util.convert(t, "BIN", "HEX");
+                    tw.WriteLine(writer + t);
+
+
+                }
+                tw.WriteLine(":00000001FF");
             }
             else if (memorytype == "S")
             {
-              
+                for (int i = 0; i < dssm.stackSegment.Length; i++)
+                {
+                    int result = 0;
+                    string address = Util.convert(Convert.ToString(i), "DEC", "HEX");
+                    address = Util.expandBit(address, 4);
+                    string data = Util.convert(dssm.stackSegment[i].ToString(), "BIN", "HEX");
+                    string writer = ":02" + address + "00" + Util.expandBit(data, 4);
+                    for (int j = 1; j <= writer.Length - 2; j += 2)
+                    {
+                        string a = writer.Substring(j, 2);
+                        result += Convert.ToInt32(Util.convert(a, "HEX", "DEC"));
+                    }
+                    result = result % 256;
+                    string b = Util.convert(Convert.ToString(result), "DEC", "BIN");
+                    b = Util.expandBit(b, 8);
+                    b = Complement(b);
+                    int k = Convert.ToInt32(Util.convert(b, "BIN", "DEC")) + 1;
+                    string t = Util.convert(Convert.ToString(k), "DEC", "BIN");
+                    t = Util.convert(t, "BIN", "HEX");
+                    tw.WriteLine(writer + t);
+
+
+                }
+                tw.WriteLine(":00000001FF");
             }
             tw.Close();
 
