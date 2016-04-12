@@ -41,7 +41,8 @@ namespace Dssem
 
         public DSSM()
         {
-            Memory.initdic();
+            if (!Memory.initFlag)
+                Memory.initDic();
             for (int i = 0; i < codeSegment.Length; i++)
             {
                 codeSegment[i] = new Memory();

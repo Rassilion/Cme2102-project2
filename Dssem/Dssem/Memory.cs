@@ -17,6 +17,7 @@ namespace Dssem
         public static Dictionary<string, string> ioReference = new Dictionary<string, string>();
         public static Dictionary<string, string> stackReference = new Dictionary<string, string>();
 
+        public static bool initFlag=false;
         static void fullmemoryRef()
         {
             memoryReference.Add("OR", "0001");
@@ -53,12 +54,13 @@ namespace Dssem
             stackReference.Add("SZFull", "0100");
         }
 
-        public static void initdic()
+        public static void initDic()
         {
             fullioRef();
             fullmemoryRef();
             fullregisterRef();
             fullstackRef();
+            initFlag = true;
         }
 
         public Memory(string i, string opcode, string data)
