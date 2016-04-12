@@ -208,13 +208,14 @@ namespace Dssem
                 else if (b == 7)
                 {
                     //ASHR
-                    AC.ASHR();
+                    E=AC.ASHR();
+                    
                     op = "ASHR : rB7  AC <- ShiftRight(AC)";
                 }
                 else if (b == 8)
                 {
                     //ASHL
-                    AC.ASHL();
+                   E= AC.ASHL();
                     op = "ASHL :rB8 AC <- ShiftLeft(AC)";
                 }
                 else if (b == 9)

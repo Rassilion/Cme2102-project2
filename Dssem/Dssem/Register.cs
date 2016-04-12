@@ -76,9 +76,10 @@ namespace Dssem
         {
             return Convert.ToInt32(Util.convert(data, "BIN", "DEC"));
         }
-        public void ASHR()
+        public int ASHR()
         {
             string result = "";
+            string E = data.Substring(data.Length-1,1);
             for (int i = 0; i < size; i++)
             {
                 if (i == 0)
@@ -91,12 +92,13 @@ namespace Dssem
                 }
             }
             Load(result);
-
+            return Convert.ToInt32(E);
         }
-        public void ASHL()
+        public int ASHL()
         {
 
             string result = "";
+            string E = data.Substring(0, 1);
             for (int i = 0; i < size; i++)
             {
                 if (i == data.Length - 1)
@@ -109,7 +111,7 @@ namespace Dssem
                 }
             }
             Load(result);
-
+            return Convert.ToInt32(E);
 
         }
         public void Complement()
