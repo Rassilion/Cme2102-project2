@@ -31,7 +31,7 @@ namespace Dssem
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
+          
         }
 
 
@@ -110,6 +110,7 @@ namespace Dssem
             irtext.Text = Util.convert(dssm.IR.getData(), "BIN", showValue);
             actext.Text = Util.convert(dssm.AC.getData(), "BIN", showValue);
             sptext.Text = Util.convert(dssm.SP.getData(), "BIN", showValue);
+            
             dssm.input = Util.convert(inprtext.Text, showValue, "BIN"); 
 
             //flags
@@ -138,7 +139,7 @@ namespace Dssem
             //reset text
             mop.Text = "";
             //reset input
-            inprtext.Text="";
+            inprtext.Text="0";
             try
             {
                 using (StreamReader sr = new StreamReader(filePath))
