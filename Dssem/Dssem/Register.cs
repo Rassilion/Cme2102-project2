@@ -15,6 +15,7 @@ namespace Dssem
         public Register(string data, int size)
         {
             this.size = size;
+                      
             Load(data);
         }
         public void Load(string data)
@@ -49,6 +50,8 @@ namespace Dssem
         public void Clear()
         {
             data = Util.expandBit("0", size);
+
+
         }
         public void Decrement()
         {

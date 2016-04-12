@@ -43,7 +43,8 @@ namespace Dssem
             {
                 result = Convert.ToString(Convert.ToInt32(number, 2), 16);
             }
-            else if (fromBase == "BIN" && toBase == "DEC")
+            else if (fromBase 
+                == "BIN" && toBase == "DEC")
             {
                 result = Convert.ToString(Convert.ToInt32(number, 2), 10);
             }

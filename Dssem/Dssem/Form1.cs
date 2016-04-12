@@ -370,5 +370,32 @@ namespace Dssem
             colorDialog1.ShowDialog();
             this.BackColor = colorDialog1.Color;
         }
+
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            //pctext.Clear();
+            //artext.Clear();
+            //actext.Clear();
+            //drtext.Clear();
+            //irtext.Clear();
+            //sptext.Clear();
+            //inprtext.Clear();
+            //sctext.Clear();
+            //etext.Clear();
+            //fgitext.Clear();
+            //itext.Clear();
+            //stext.Clear();
+            foreach (Control item in groupBox1.Controls)
+            {
+                if (item is TextBox)
+                {
+                    TextBox tbox = (TextBox)item;
+                    tbox.Clear();
+                
+                }
+            
+            }
+            
+        }
     }
 }
