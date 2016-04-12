@@ -19,6 +19,7 @@ namespace Dssem
         string showValue = "BIN";
         //code list selected index
         int index = 1;
+        int indexstart = 1;
         //file path
         public static string filePath;
 
@@ -198,7 +199,7 @@ namespace Dssem
                     {
                         if (i == 0)//skipto code 
                         {
-                            index++;
+                            indexstart++;
                         }
                         break;
                     }
@@ -207,8 +208,11 @@ namespace Dssem
                         if (splited[i] == "ORG")
                         {
                             if (splited[i + 1].ToUpper() == "C")
+                            {
                                 c_index = Convert.ToInt32(splited[i + 2]);
-                            if (splited[i + 1].ToUpper() == "D")
+                                indexstart = indexstart - c_index;
+                            }
+                            else if (splited[i + 1].ToUpper() == "D")
                                 d_index = Convert.ToInt32(splited[i + 2]);
                             break;
                         }
@@ -306,7 +310,7 @@ namespace Dssem
                             //get label adress
                             if (dssm.labelTable.ContainsKey(data))
                                 data = dssm.labelTable[data];
-                            dssm.codeSegment[c_index] = new Memory(ibit, splited[i+1], data);
+                            dssm.codeSegment[c_index] = new Memory(ibit, splited[i + 1], data);
                             c_index++;
                             break;
                         }
@@ -363,9 +367,8 @@ namespace Dssem
             {
                 if (dssm.S == 1)
                 {
-                    codeList.SelectedIndex = index;
+                    codeList.SelectedIndex = indexstart + dssm.PC.getDataInt();
                     parse(codeList.Items[index].ToString());
-                    index++;
                     mop.Text = dssm.nextInstruction();
                 }
                 else
@@ -412,11 +415,8 @@ namespace Dssem
                 if (dssm.S == 1)
                 {
                     mop.Text = dssm.nextMicroOp();
-                    codeList.SelectedIndex = index;
-                    if (dssm.SC == 0)
-                    {
-                        index++;
-                    }
+                    codeList.SelectedIndex = indexstart + dssm.PC.getDataInt();
+
                 }
                 else
                 {
