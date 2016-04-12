@@ -35,7 +35,7 @@ namespace Dssem
             }
             else if (choseFile.Text == ".hex")
             {
-                
+                writehexFile("C");
             }
         }
 
@@ -108,11 +108,12 @@ namespace Dssem
                 { 
                     int result=0;
                     string address=Util.convert(Convert.ToString(i),"DEC","HEX");
-                    string data = Util.convert(dssm.codeSegment[i].data,"BIN","HEX");
+                    address = Util.expandBit(address,4);
+                    string data = Util.convert(dssm.codeSegment[i].ToString(),"BIN","HEX");
                     string writer = ":02" + address + "00" + Util.expandBit(data, 4);
-                    for (int j = 1; j <writer.Length ; j+=2)
+                    for (int j = 1; j <=writer.Length-2 ; j+=2)
                     {
-                        string a = writer.Substring(i,2);
+                        string a = writer.Substring(j,2);
                         result+= Convert.ToInt32(Util.convert(a,"HEX","DEC"));
                     }
                     result = result % 256;
@@ -120,7 +121,9 @@ namespace Dssem
                     b = Util.expandBit(b,8);
                     b = Complement(b);
                     int k = Convert.ToInt32(Util.convert(b, "BIN", "DEC"))+1;
-                    tw.WriteLine(writer+Util.convert(Convert.ToString(k),"DEC","BIN"));
+                    string t= Util.convert(Convert.ToString(k), "DEC", "BIN");
+                    t = Util.convert(t,"BIN","HEX");
+                    tw.WriteLine(writer+t);
 
                     
                 }
@@ -133,7 +136,7 @@ namespace Dssem
             {
               
             }
-
+            tw.Close();
 
         }
         public string Complement(string data)
