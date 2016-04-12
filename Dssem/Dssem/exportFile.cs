@@ -27,9 +27,9 @@ namespace Dssem
             
             if (choseFile.Text==".mif")
             {
-                FileWriter("16","8",".mif","C");
-              //  FileWriter("16", "8", ".mif", "D");
-             //   FileWriter("8", "8", ".mif", "S");
+                FileWriter("16","8", codeName.Text,"C");
+               FileWriter("16", "8", dataName.Text, "D");
+                FileWriter("8", "8", stackName.Text, "S");
 
 
             }
@@ -39,17 +39,18 @@ namespace Dssem
             }
         }
 
-        public void FileWriter(string depth,string length,string filetype,string memorytype)
+        public void FileWriter(string depth,string length,string filename,string memorytype)
         {
 
-            string path = "Example"+Convert.ToString(count)+".mif";
+            string path = filename+".mif";
             count++;
             try
             {
                 
-                   // File.Create(path);
+                    
+
                     MessageBox.Show("GELDİ");
-                    FileStream fs1 = new FileStream("Example12.mif", FileMode.OpenOrCreate, FileAccess.Write);
+                    FileStream fs1 = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write);
                     StreamWriter tw = new StreamWriter(fs1);
                   
                     tw.WriteLine("DEPTH=" + depth + ";");
