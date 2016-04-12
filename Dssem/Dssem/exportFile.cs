@@ -33,9 +33,9 @@ namespace Dssem
 
 
             }
-            else if (choseFile.Text == ".d")
+            else if (choseFile.Text == ".hex")
             {
-
+                
             }
         }
 
@@ -93,6 +93,65 @@ namespace Dssem
             {
                 MessageBox.Show("File error");
             }
+        }
+
+        public void writehexFile(string memorytype)
+        {
+
+            TextWriter tw = new StreamWriter("newHex.hex", true);
+
+            if (memorytype == "C")
+            { 
+               
+
+                for (int i = 0; i < dssm.codeSegment.Length; i++)
+                { 
+                    int result=0;
+                    string address=Util.convert(Convert.ToString(i),"DEC","HEX");
+                    string data = Util.convert(dssm.codeSegment[i].data,"BIN","HEX");
+                    string writer = ":02" + address + "00" + Util.expandBit(data, 4);
+                    for (int j = 1; j <writer.Length ; j+=2)
+                    {
+                        string a = writer.Substring(i,2);
+                        result+= Convert.ToInt32(Util.convert(a,"HEX","DEC"));
+                    }
+                    result = result % 256;
+                    string b = Util.convert(Convert.ToString(result),"DEC","BIN");
+                    b = Util.expandBit(b,8);
+                    b = Complement(b);
+                    int k = Convert.ToInt32(Util.convert(b, "BIN", "DEC"))+1;
+                    tw.WriteLine(writer+Util.convert(Convert.ToString(k),"DEC","BIN"));
+
+                    
+                }
+            }
+            else if (memorytype == "D")
+            {
+               
+            }
+            else if (memorytype == "S")
+            {
+              
+            }
+
+
+        }
+        public string Complement(string data)
+        {
+            string result = "";
+            for (int i = 0; i < data.Length; i++)
+            {
+                if (data[i] == '0')
+                {
+                    result += "1";
+                }
+                else
+                {
+                    result += "0";
+                }
+            }
+
+            return result;
         }
 
         
