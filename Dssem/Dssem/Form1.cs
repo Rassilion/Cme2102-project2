@@ -60,16 +60,12 @@ namespace Dssem
             //code segment
             foreach (Memory cell in dssm.codeSegment)
             {
-                if (cell == null)
-                {
-                    codeSegmentView.Rows.Add("");
-                    continue;
-                }
                 codeSegmentView.Rows.Add(Util.convert(cell.ToString(), "BIN", showValue));
             }
             foreach (DataGridViewRow row in codeSegmentView.Rows)
             {
                 codeSegmentView.Rows[row.Index].HeaderCell.Value = (row.Index).ToString();
+                codeSegmentView.CurrentCell = null;
                 if (dssm.PC.getDataInt() == row.Index)
                 {
                     row.Selected = true;
@@ -79,16 +75,12 @@ namespace Dssem
             //data segment
             foreach (Memory cell in dssm.dataSegment)
             {
-                if (cell == null)
-                {
-                    dataSegmentView.Rows.Add("");
-                    continue;
-                }
                 dataSegmentView.Rows.Add(Util.convert(cell.ToString(), "BIN", showValue));
             }
             foreach (DataGridViewRow row in dataSegmentView.Rows)
             {
                 dataSegmentView.Rows[row.Index].HeaderCell.Value = (row.Index).ToString();
+                dataSegmentView.CurrentCell = null;
                 if (dssm.AR.getDataInt() == row.Index)
                 {
                     row.Selected = true;
@@ -98,16 +90,12 @@ namespace Dssem
             //stack segment
             foreach (Memory cell in dssm.stackSegment)
             {
-                if (cell == null)
-                {
-                    stackSegmentView.Rows.Add("");
-                    continue;
-                }
                 stackSegmentView.Rows.Add(Util.convert(cell.ToString(), "BIN", showValue));
             }
             foreach (DataGridViewRow row in stackSegmentView.Rows)
             {
                 stackSegmentView.Rows[row.Index].HeaderCell.Value = (row.Index).ToString();
+                stackSegmentView.CurrentCell = null;
                 if (dssm.SP.getDataInt() == row.Index)
                 {
                     row.Selected = true;
