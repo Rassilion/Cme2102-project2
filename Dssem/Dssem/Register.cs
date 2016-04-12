@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dssem
 {
-    class Register
+    public class Register
     {
 
         //base class for registers
