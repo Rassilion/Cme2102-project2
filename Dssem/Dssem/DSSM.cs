@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dssem
 {
-    class DSSM
+    public class DSSM
 
     {
         public Memory[] codeSegment = new Memory[16];

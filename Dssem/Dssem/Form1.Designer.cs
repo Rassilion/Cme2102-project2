@@ -34,6 +34,7 @@
             this.openFileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exportToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.resetToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.baseColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.codeList = new System.Windows.Forms.ListBox();
             this.codeSegmentView = new System.Windows.Forms.DataGridView();
@@ -86,7 +87,6 @@
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
             this.colorDialog1 = new System.Windows.Forms.ColorDialog();
-            this.baseColorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.codeSegmentView)).BeginInit();
             this.Memory.SuspendLayout();
@@ -134,15 +134,24 @@
             // 
             this.exportToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("exportToolStripMenuItem.Image")));
             this.exportToolStripMenuItem.Name = "exportToolStripMenuItem";
-            this.exportToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.exportToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.exportToolStripMenuItem.Text = "Export";
+            this.exportToolStripMenuItem.Click += new System.EventHandler(this.exportToolStripMenuItem_Click);
             // 
             // resetToolStripMenuItem
             // 
             this.resetToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("resetToolStripMenuItem.Image")));
             this.resetToolStripMenuItem.Name = "resetToolStripMenuItem";
-            this.resetToolStripMenuItem.Size = new System.Drawing.Size(147, 26);
+            this.resetToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
             this.resetToolStripMenuItem.Text = "Reset";
+            // 
+            // baseColorToolStripMenuItem
+            // 
+            this.baseColorToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("baseColorToolStripMenuItem.Image")));
+            this.baseColorToolStripMenuItem.Name = "baseColorToolStripMenuItem";
+            this.baseColorToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
+            this.baseColorToolStripMenuItem.Text = "Base color";
+            this.baseColorToolStripMenuItem.Click += new System.EventHandler(this.baseColorToolStripMenuItem_Click);
             // 
             // aboutToolStripMenuItem
             // 
@@ -653,14 +662,6 @@
             this.label20.Size = new System.Drawing.Size(107, 20);
             this.label20.TabIndex = 21;
             this.label20.Text = "Label Table";
-            // 
-            // baseColorToolStripMenuItem
-            // 
-            this.baseColorToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("baseColorToolStripMenuItem.Image")));
-            this.baseColorToolStripMenuItem.Name = "baseColorToolStripMenuItem";
-            this.baseColorToolStripMenuItem.Size = new System.Drawing.Size(181, 26);
-            this.baseColorToolStripMenuItem.Text = "Base color";
-            this.baseColorToolStripMenuItem.Click += new System.EventHandler(this.baseColorToolStripMenuItem_Click);
             // 
             // Form1
             // 

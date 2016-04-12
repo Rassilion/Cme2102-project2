@@ -436,5 +436,12 @@ namespace Dssem
             colorDialog1.ShowDialog();
             this.BackColor = colorDialog1.Color;
         }
+
+        private void exportToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            exportFile ExportFile = new exportFile(dssm);
+            ExportFile.ShowDialog();
+
+        }
     }
 }
