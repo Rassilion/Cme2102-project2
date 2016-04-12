@@ -414,7 +414,9 @@ namespace Dssem
             {
                 if (dssm.S == 1)
                 {
-                    mop.Text = dssm.nextMicroOp();
+                    if (dssm.SC == 0)
+                        mop.Text = "";
+                    mop.Text += dssm.nextMicroOp()+"\n";
                     codeList.SelectedIndex = indexstart + dssm.PC.getDataInt();
 
                 }
