@@ -35,8 +35,12 @@
             this.label5 = new System.Windows.Forms.Label();
             this.choseData = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.codeName = new System.Windows.Forms.TextBox();
+            this.dataName = new System.Windows.Forms.TextBox();
+            this.code = new System.Windows.Forms.Label();
+            this.stackName = new System.Windows.Forms.TextBox();
+            this.data = new System.Windows.Forms.Label();
+            this.stack = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // choseAdress
@@ -65,7 +69,7 @@
             this.choseFile.Size = new System.Drawing.Size(121, 24);
             this.choseFile.TabIndex = 4;
             this.choseFile.Text = ".mif";
-            this.choseFile.SelectedIndexChanged += new System.EventHandler(this.choseFile_SelectedIndexChanged);
+        //    this.choseFile.SelectedIndexChanged += new System.EventHandler(this.choseFile_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -119,27 +123,65 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // textBox1
+            // codeName
             // 
-            this.textBox1.Location = new System.Drawing.Point(382, 81);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 22);
-            this.textBox1.TabIndex = 12;
+            this.codeName.Location = new System.Drawing.Point(415, 68);
+            this.codeName.Name = "codeName";
+            this.codeName.Size = new System.Drawing.Size(100, 22);
+            this.codeName.TabIndex = 12;
             // 
-            // textBox2
+            // dataName
             // 
-            this.textBox2.Location = new System.Drawing.Point(382, 134);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 22);
-            this.textBox2.TabIndex = 13;
+            this.dataName.Location = new System.Drawing.Point(415, 117);
+            this.dataName.Name = "dataName";
+            this.dataName.Size = new System.Drawing.Size(100, 22);
+            this.dataName.TabIndex = 13;
+            // 
+            // code
+            // 
+            this.code.AutoSize = true;
+            this.code.Location = new System.Drawing.Point(310, 68);
+            this.code.Name = "code";
+            this.code.Size = new System.Drawing.Size(80, 17);
+            this.code.TabIndex = 14;
+            this.code.Text = "Codename:";
+            // 
+            // stackName
+            // 
+            this.stackName.Location = new System.Drawing.Point(415, 175);
+            this.stackName.Name = "stackName";
+            this.stackName.Size = new System.Drawing.Size(100, 22);
+            this.stackName.TabIndex = 15;
+            // 
+            // data
+            // 
+            this.data.AutoSize = true;
+            this.data.Location = new System.Drawing.Point(310, 119);
+            this.data.Name = "data";
+            this.data.Size = new System.Drawing.Size(83, 17);
+            this.data.TabIndex = 16;
+            this.data.Text = "DataName :";
+            // 
+            // stack
+            // 
+            this.stack.AutoSize = true;
+            this.stack.Location = new System.Drawing.Point(310, 175);
+            this.stack.Name = "stack";
+            this.stack.Size = new System.Drawing.Size(86, 17);
+            this.stack.TabIndex = 17;
+            this.stack.Text = "Stackname :";
             // 
             // exportFile
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(544, 349);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.stack);
+            this.Controls.Add(this.data);
+            this.Controls.Add(this.stackName);
+            this.Controls.Add(this.code);
+            this.Controls.Add(this.dataName);
+            this.Controls.Add(this.codeName);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.choseData);
             this.Controls.Add(this.label5);
@@ -162,7 +204,11 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox choseData;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox codeName;
+        private System.Windows.Forms.TextBox dataName;
+        private System.Windows.Forms.Label code;
+        private System.Windows.Forms.TextBox stackName;
+        private System.Windows.Forms.Label data;
+        private System.Windows.Forms.Label stack;
     }
 }

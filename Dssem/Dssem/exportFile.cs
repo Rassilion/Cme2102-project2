@@ -94,16 +94,6 @@ namespace Dssem
             }
         }
 
-        private void choseFile_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (choseFile.Text==".mif")
-            {
-                
-            }
-            else
-            {
-
-            }
-        }
+        
     }
 }
