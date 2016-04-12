@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dssem
 {
-    class Register
+    public class Register
     {
 
         //base class for registers
@@ -22,7 +22,7 @@ namespace Dssem
         {
             if (data.Length > size)
             {
-                this.data = data.Substring(data.Length - size, size - 1);
+                this.data = data.Substring(data.Length - size, size);
             }
             else {
                 this.data = Util.expandBit(data, size);
