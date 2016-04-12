@@ -212,6 +212,8 @@ namespace Dssem
                                 d_index = Convert.ToInt32(splited[i + 2]);
                             break;
                         }
+                        c_index++;//increase code address
+                        break;
                     }
                     else if (splited[i].Contains(','))
                     {
@@ -227,10 +229,7 @@ namespace Dssem
                             dssm.labelTable.Add(splited[i], Util.convert(Convert.ToString(c_index), "DEC", "BIN"));//add label adress to label table
                             c_index++;
                         }
-                    }
-                    else
-                    {
-                        c_index++;//increase code address
+                        break;
                     }
                 }
             }

@@ -420,7 +420,8 @@ namespace Dssem
             else if (d == 9)
             {
                 //BSA
-                PC.Load(AR.getData()); SC = 0;//D9T4
+                PC.Load(AR.getData());
+                SC = 0;//D9T4
                 op = "PC <- AR , SC <-0";
             }
             else if (d == 15)
@@ -428,6 +429,7 @@ namespace Dssem
                 //ISZ
                 DR.Increment();//D15T4
                 op = "DR <- DR+1";
+                incSC();
             }
             return op;
         }
