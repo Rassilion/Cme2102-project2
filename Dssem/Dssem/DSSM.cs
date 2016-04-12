@@ -17,7 +17,7 @@ namespace Dssem
         public Register IR = new Register("0", 9);
         public Register AC = new Register("0", 4);
         public Register AR = new Register("0", 4);
-        public Register INPR = new Register("0", 8);
+       
         public Register SP = new Register("0", 3);
 
 
@@ -30,6 +30,7 @@ namespace Dssem
         public int r;
         public int p;
         public int b;
+        public string input="";
 
 
 
@@ -229,7 +230,7 @@ namespace Dssem
             {
                 if (b == 7 || b == 15)
                 {
-                    AC.Load(INPR.getData());
+                    AC.Load(input);
                     FGI = 0;
                     SC = 0;
                     op = "INP pB7 | pB15 : AC(0..7) <-INPR FGI <-0";
