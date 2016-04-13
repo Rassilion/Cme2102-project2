@@ -98,7 +98,7 @@ namespace Dssem
         public void writehexFile(string memorytype)
         {
             string path = "newHex.hex";
-            if (!File.Exists(path))
+            if (File.Exists(path))
             {
                 MessageBox.Show(path+"adinda bir dosya zaten var ");
             
