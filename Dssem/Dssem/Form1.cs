@@ -456,5 +456,10 @@ namespace Dssem
             valueBox.Text = "";
 
         }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("KEMAL BAYSARI 2013510023 \n DENİZ GEZGİN 2013510041 \n METİN KAHVECİ 2013510049");
+        }
     }
 }
