@@ -244,9 +244,9 @@ namespace Dssem
                 }
                 else if (b == 2 || b == 10)
                 {
-                    DR.Load(stackSegment[SP.getDataInt()].data);
+                    PC.Load(stackSegment[SP.getDataInt()].data);
                     incSC();
-                    op = "Pop: pB2 | pB10 DR <-Stack[SP] ";
+                    op = "Pop: pB2 | pB10 PC <-Stack[SP] ";
                 }
                 else if (b == 3 || b == 11)
                 {
@@ -356,10 +356,13 @@ namespace Dssem
             else if (d == 9)
             {
                 //BSA
-                dataSegment[AR.getDataInt()].data = PC.getData();
-                AR.Increment();//D9T3
-                incSC();
+             
                 op = "M[SP] <- PC , SC<-0 ";
+               
+                stackSegment[SP.getDataInt()].data =PC.getData();
+                incSC();
+
+
             }
             else if (d == 15)
             {
@@ -422,9 +425,10 @@ namespace Dssem
             else if (d == 9)
             {
                 //BSA
+                SP.Increment();
                 PC.Load(AR.getData());
                 SC = 0;//D9T4
-                op = "PC <- AR , SC <-0";
+                op = "PC <- AR , SP <-SP+1, SC <-0";
             }
             else if (d == 15)
             {

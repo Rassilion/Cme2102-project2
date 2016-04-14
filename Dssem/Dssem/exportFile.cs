@@ -35,7 +35,9 @@ namespace Dssem
             }
             else if (choseFile.Text == ".hex")
             {
-                writehexFile("C");
+                writehexFile("C",codeName.Text);
+                writehexFile("D", dataName.Text);
+                writehexFile("S", stackName.Text);
             }
         }
 
@@ -63,24 +65,31 @@ namespace Dssem
                     {
                         for (int i = 0; i < Convert.ToInt32(depth); i++)
                         {
-                            tw.Write(Util.convert(Convert.ToString(i), "DEC", choseAdress.Text) + ":");
-                            tw.WriteLine(Util.convert(dssm.codeSegment[i].i + dssm.codeSegment[i].opcode + dssm.codeSegment[i].data, "BIN", choseData.Text) + ";");
+                            tw.Write((Util.convert(Convert.ToString(i), "DEC", choseAdress.Text)).ToUpper() + ":");
+                        string a = Util.convert(dssm.codeSegment[i].i + dssm.codeSegment[i].opcode + dssm.codeSegment[i].data, "BIN", choseData.Text).ToUpper();
+                        if (choseData.Text == "HEX")
+                        {
+                            a = Util.expandBit(a, 3);
+
+                        }
+                        tw.WriteLine( a+ ";");
+                      
                         }
                     }
                     else if (memorytype == "D")
                     {
                         for (int i = 0; i < Convert.ToInt32(depth); i++)
                         {
-                            tw.Write(Util.convert(Convert.ToString(i), "DEC", choseAdress.Text) + ":");
-                            tw.WriteLine(Util.convert(dssm.dataSegment[i].i + dssm.dataSegment[i].opcode + dssm.dataSegment[i].data, "BIN", choseData.Text) + ";");
+                            tw.Write((Util.convert(Convert.ToString(i), "DEC", choseAdress.Text)).ToUpper() + ":");
+                            tw.WriteLine(Util.convert(dssm.dataSegment[i].i + dssm.dataSegment[i].opcode + dssm.dataSegment[i].data, "BIN", choseData.Text).ToUpper() + ";");
                         }
                     }
                     else if (memorytype == "S")
                     {
                         for (int i = 0; i < Convert.ToInt32(depth); i++)
                         {
-                            tw.Write(Util.convert(Convert.ToString(i), "DEC", choseAdress.Text) + ":");
-                            tw.WriteLine(Util.convert(dssm.stackSegment[i].i + dssm.stackSegment[i].opcode + dssm.stackSegment[i].data, "BIN", choseData.Text) + ";");
+                            tw.Write((Util.convert(Convert.ToString(i), "DEC", choseAdress.Text)).ToUpper() + ":");
+                            tw.WriteLine(Util.convert(dssm.stackSegment[i].i + dssm.stackSegment[i].opcode + dssm.stackSegment[i].data, "BIN", choseData.Text).ToUpper() + ";");
                         }
                     }
 
@@ -95,9 +104,9 @@ namespace Dssem
             }
         }
 
-        public void writehexFile(string memorytype)
+        public void writehexFile(string memorytype,string path)
         {
-            string path = "newHex.hex";
+            path = path + ".hex";
             if (File.Exists(path))
             {
                 MessageBox.Show(path+"adinda bir dosya zaten var ");
@@ -116,8 +125,8 @@ namespace Dssem
                         int result = 0;
                         string address = Util.convert(Convert.ToString(i), "DEC", "HEX");
                         address = Util.expandBit(address, 4);
-                        string data = Util.convert(dssm.codeSegment[i].ToString(), "BIN", "HEX");
-                        string writer = ":02" + address + "00" + Util.expandBit(data, 4);
+                        string data = Util.convert(dssm.codeSegment[i].ToString(), "BIN", "HEX").ToUpper();
+                        string writer = ":02" + address.ToUpper() + "00" + Util.expandBit(data, 4);
                         for (int j = 1; j <= writer.Length - 2; j += 2)
                         {
                             string a = writer.Substring(j, 2);
@@ -129,7 +138,7 @@ namespace Dssem
                         b = Complement(b);
                         int k = Convert.ToInt32(Util.convert(b, "BIN", "DEC")) + 1;
                         string t = Util.convert(Convert.ToString(k), "DEC", "BIN");
-                        t = Util.convert(t, "BIN", "HEX");
+                        t = Util.convert(t, "BIN", "HEX").ToUpper();
                         tw.WriteLine(writer + t);
 
 

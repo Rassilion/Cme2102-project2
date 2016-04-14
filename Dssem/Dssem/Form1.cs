@@ -31,7 +31,8 @@ namespace Dssem
 
         private void Form1_Load(object sender, EventArgs e)
         {
-          
+            updateForm();
+            inprtext.Text = "0";
         }
 
 
@@ -110,8 +111,8 @@ namespace Dssem
             irtext.Text = Util.convert(dssm.IR.getData(), "BIN", showValue);
             actext.Text = Util.convert(dssm.AC.getData(), "BIN", showValue);
             sptext.Text = Util.convert(dssm.SP.getData(), "BIN", showValue);
-            
-            dssm.input = Util.convert(inprtext.Text, showValue, "BIN"); 
+
+            dssm.input = Util.convert(inprtext.Text, showValue, "BIN");
 
             //flags
             etext.Text = Util.convert(Convert.ToString(dssm.E), "BIN", showValue);
@@ -139,7 +140,7 @@ namespace Dssem
             //reset text
             mop.Text = "";
             //reset input
-            inprtext.Text="0";
+            inprtext.Text = "0";
             try
             {
                 using (StreamReader sr = new StreamReader(filePath))
@@ -407,7 +408,7 @@ namespace Dssem
                 {
                     if (dssm.SC == 0)
                         mop.Text = "";
-                    mop.Text += dssm.nextMicroOp()+"\n";
+                    mop.Text += dssm.nextMicroOp() + "\n";
                     codeList.SelectedIndex = indexstart + dssm.PC.getDataInt();
 
                 }
@@ -434,6 +435,25 @@ namespace Dssem
         {
             exportFile ExportFile = new exportFile(dssm);
             ExportFile.ShowDialog();
+
+        }
+
+        private void resetToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+            this.dssm = new DSSM();
+            showValue = "BIN";
+            //code list selected index
+            index = 1;
+            indexstart = 1;
+            //file path
+            filePath = "";
+            updateForm();
+            mop.Text = "";
+            codeList.Items.Clear();
+            labeltable.Items.Clear();
+            opBox.Text = "";
+            valueBox.Text = "";
 
         }
     }
