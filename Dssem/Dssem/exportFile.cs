@@ -15,102 +15,108 @@ namespace Dssem
     {
         DSSM dssm = new DSSM();
         int count = 12;
-        
+        string dir = Path.GetDirectoryName(Form1.filePath) + @"\";
         public exportFile(DSSM dssm)
         {
             InitializeComponent();
             this.dssm = dssm;
+            string fileName = Path.GetFileNameWithoutExtension(Form1.filePath);
+            codeName.Text = fileName + "Code";
+            dataName.Text = fileName + "Data";
+            stackName.Text = fileName + "Stack";
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            if (choseFile.Text==".mif")
+
+            if (choseFile.Text == ".mif")
             {
-                FileWriter("16","8", codeName.Text,"C");
-               FileWriter("16", "8", dataName.Text, "D");
-                FileWriter("8", "8", stackName.Text, "S");
+                FileWriter("16", "9", codeName.Text, "C");
+                FileWriter("16", "9", dataName.Text, "D");
+                FileWriter("8", "9", stackName.Text, "S");
 
 
             }
             else if (choseFile.Text == ".hex")
             {
-                writehexFile("C",codeName.Text);
+                writehexFile("C", codeName.Text);
                 writehexFile("D", dataName.Text);
                 writehexFile("S", stackName.Text);
             }
         }
 
-        public void FileWriter(string depth,string length,string filename,string memorytype)
+        public void FileWriter(string depth, string length, string filename, string memorytype)
         {
 
-            string path = filename+".mif";
+            string path = dir + filename + ".mif";
+            if (File.Exists(path))
+            {
+                MessageBox.Show(path + " file already created");
+                return;
+            }
             count++;
             try
             {
-                
-                    
+                MessageBox.Show(path + " created");
+                FileStream fs1 = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write);
+                StreamWriter tw = new StreamWriter(fs1);
 
-                    MessageBox.Show("GELDİ");
-                    FileStream fs1 = new FileStream(path, FileMode.OpenOrCreate, FileAccess.Write);
-                    StreamWriter tw = new StreamWriter(fs1);
-                  
-                    tw.WriteLine("DEPTH=" + depth + ";");
-                    tw.WriteLine("WIDTH=" + length + ";");
-                    tw.WriteLine("ADRESS_RADIX=" + choseAdress.Text + ";");
-                    tw.WriteLine("DATA_RADIX=" + choseData.Text + ";");
-                    tw.WriteLine("CONTENT");
-                    tw.WriteLine("BEGIN");
-                    if (memorytype == "C")
+                tw.WriteLine("DEPTH=" + depth + ";");
+                tw.WriteLine("WIDTH=" + length + ";");
+                tw.WriteLine("ADRESS_RADIX=" + choseAdress.Text + ";");
+                tw.WriteLine("DATA_RADIX=" + choseData.Text + ";");
+                tw.WriteLine("CONTENT");
+                tw.WriteLine("BEGIN");
+                if (memorytype == "C")
+                {
+                    for (int i = 0; i < Convert.ToInt32(depth); i++)
                     {
-                        for (int i = 0; i < Convert.ToInt32(depth); i++)
-                        {
-                            tw.Write((Util.convert(Convert.ToString(i), "DEC", choseAdress.Text)).ToUpper() + ":");
+                        tw.Write((Util.convert(Convert.ToString(i), "DEC", choseAdress.Text)).ToUpper() + ":");
                         string a = Util.convert(dssm.codeSegment[i].i + dssm.codeSegment[i].opcode + dssm.codeSegment[i].data, "BIN", choseData.Text).ToUpper();
                         if (choseData.Text == "HEX")
                         {
                             a = Util.expandBit(a, 3);
 
                         }
-                        tw.WriteLine( a+ ";");
-                      
-                        }
-                    }
-                    else if (memorytype == "D")
-                    {
-                        for (int i = 0; i < Convert.ToInt32(depth); i++)
-                        {
-                            tw.Write((Util.convert(Convert.ToString(i), "DEC", choseAdress.Text)).ToUpper() + ":");
-                            tw.WriteLine(Util.convert(dssm.dataSegment[i].i + dssm.dataSegment[i].opcode + dssm.dataSegment[i].data, "BIN", choseData.Text).ToUpper() + ";");
-                        }
-                    }
-                    else if (memorytype == "S")
-                    {
-                        for (int i = 0; i < Convert.ToInt32(depth); i++)
-                        {
-                            tw.Write((Util.convert(Convert.ToString(i), "DEC", choseAdress.Text)).ToUpper() + ":");
-                            tw.WriteLine(Util.convert(dssm.stackSegment[i].i + dssm.stackSegment[i].opcode + dssm.stackSegment[i].data, "BIN", choseData.Text).ToUpper() + ";");
-                        }
-                    }
+                        tw.WriteLine(a + ";");
 
-                    tw.Close();
+                    }
+                }
+                else if (memorytype == "D")
+                {
+                    for (int i = 0; i < Convert.ToInt32(depth); i++)
+                    {
+                        tw.Write((Util.convert(Convert.ToString(i), "DEC", choseAdress.Text)).ToUpper() + ":");
+                        tw.WriteLine(Util.convert(dssm.dataSegment[i].i + dssm.dataSegment[i].opcode + dssm.dataSegment[i].data, "BIN", choseData.Text).ToUpper() + ";");
+                    }
+                }
+                else if (memorytype == "S")
+                {
+                    for (int i = 0; i < Convert.ToInt32(depth); i++)
+                    {
+                        tw.Write((Util.convert(Convert.ToString(i), "DEC", choseAdress.Text)).ToUpper() + ":");
+                        tw.WriteLine(Util.convert(dssm.stackSegment[i].i + dssm.stackSegment[i].opcode + dssm.stackSegment[i].data, "BIN", choseData.Text).ToUpper() + ";");
+                    }
+                }
 
-                
+                tw.Close();
+
+
 
             }
-            catch (IndexOutOfRangeException)
+            catch (IOException)
             {
                 MessageBox.Show("File error");
             }
         }
 
-        public void writehexFile(string memorytype,string path)
+        public void writehexFile(string memorytype, string path)
         {
-            path = path + ".hex";
+            path = dir + path + ".hex";
             if (File.Exists(path))
             {
-                MessageBox.Show(path+"adinda bir dosya zaten var ");
-            
+                MessageBox.Show(path + " file already created");
+
             }
             else
             {
@@ -118,8 +124,6 @@ namespace Dssem
 
                 if (memorytype == "C")
                 {
-
-
                     for (int i = 0; i < dssm.codeSegment.Length; i++)
                     {
                         int result = 0;
@@ -140,8 +144,6 @@ namespace Dssem
                         string t = Util.convert(Convert.ToString(k), "DEC", "BIN");
                         t = Util.convert(t, "BIN", "HEX").ToUpper();
                         tw.WriteLine(writer + t);
-
-
                     }
                     tw.WriteLine(":00000001FF");
                 }
@@ -150,9 +152,9 @@ namespace Dssem
                     for (int i = 0; i < dssm.dataSegment.Length; i++)
                     {
                         int result = 0;
-                        string address = Util.convert(Convert.ToString(i), "DEC", "HEX");
+                        string address = Util.convert(Convert.ToString(i), "DEC", "HEX").ToUpper();
                         address = Util.expandBit(address, 4);
-                        string data = Util.convert(dssm.dataSegment[i].ToString(), "BIN", "HEX");
+                        string data = Util.convert(dssm.dataSegment[i].ToString(), "BIN", "HEX").ToUpper();
                         string writer = ":02" + address + "00" + Util.expandBit(data, 4);
                         for (int j = 1; j <= writer.Length - 2; j += 2)
                         {
@@ -165,10 +167,8 @@ namespace Dssem
                         b = Complement(b);
                         int k = Convert.ToInt32(Util.convert(b, "BIN", "DEC")) + 1;
                         string t = Util.convert(Convert.ToString(k), "DEC", "BIN");
-                        t = Util.convert(t, "BIN", "HEX");
+                        t = Util.convert(t, "BIN", "HEX").ToUpper();
                         tw.WriteLine(writer + t);
-
-
                     }
                     tw.WriteLine(":00000001FF");
                 }
@@ -177,9 +177,9 @@ namespace Dssem
                     for (int i = 0; i < dssm.stackSegment.Length; i++)
                     {
                         int result = 0;
-                        string address = Util.convert(Convert.ToString(i), "DEC", "HEX");
+                        string address = Util.convert(Convert.ToString(i), "DEC", "HEX").ToUpper();
                         address = Util.expandBit(address, 4);
-                        string data = Util.convert(dssm.stackSegment[i].ToString(), "BIN", "HEX");
+                        string data = Util.convert(dssm.stackSegment[i].ToString(), "BIN", "HEX").ToUpper();
                         string writer = ":02" + address + "00" + Util.expandBit(data, 4);
                         for (int j = 1; j <= writer.Length - 2; j += 2)
                         {
@@ -192,15 +192,15 @@ namespace Dssem
                         b = Complement(b);
                         int k = Convert.ToInt32(Util.convert(b, "BIN", "DEC")) + 1;
                         string t = Util.convert(Convert.ToString(k), "DEC", "BIN");
-                        t = Util.convert(t, "BIN", "HEX");
+                        t = Util.convert(t, "BIN", "HEX").ToUpper();
                         tw.WriteLine(writer + t);
-
-
                     }
                     tw.WriteLine(":00000001FF");
                 }
                 tw.Close();
+                MessageBox.Show(path + " created");
             }
+            
 
         }
         public string Complement(string data)
@@ -221,6 +221,6 @@ namespace Dssem
             return result;
         }
 
-        
+
     }
 }

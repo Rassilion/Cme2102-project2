@@ -52,9 +52,10 @@
             "OCT",
             "DEC",
             "UNS"});
-            this.choseAdress.Location = new System.Drawing.Point(156, 65);
+            this.choseAdress.Location = new System.Drawing.Point(117, 53);
+            this.choseAdress.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.choseAdress.Name = "choseAdress";
-            this.choseAdress.Size = new System.Drawing.Size(121, 24);
+            this.choseAdress.Size = new System.Drawing.Size(92, 21);
             this.choseAdress.TabIndex = 3;
             this.choseAdress.Text = "HEX";
             // 
@@ -64,36 +65,40 @@
             this.choseFile.Items.AddRange(new object[] {
             ".mif",
             ".hex"});
-            this.choseFile.Location = new System.Drawing.Point(156, 170);
+            this.choseFile.Location = new System.Drawing.Point(117, 138);
+            this.choseFile.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.choseFile.Name = "choseFile";
-            this.choseFile.Size = new System.Drawing.Size(121, 24);
+            this.choseFile.Size = new System.Drawing.Size(92, 21);
             this.choseFile.TabIndex = 4;
             this.choseFile.Text = ".mif";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 65);
+            this.label3.Location = new System.Drawing.Point(9, 53);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(121, 17);
+            this.label3.Size = new System.Drawing.Size(96, 13);
             this.label3.TabIndex = 7;
             this.label3.Text = "ADRESS_RADIX :";
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(31, 122);
+            this.label4.Location = new System.Drawing.Point(23, 99);
+            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(102, 17);
+            this.label4.Size = new System.Drawing.Size(81, 13);
             this.label4.TabIndex = 8;
             this.label4.Text = "DATA_RADIX :";
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(44, 173);
+            this.label5.Location = new System.Drawing.Point(33, 141);
+            this.label5.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(44, 17);
+            this.label5.Size = new System.Drawing.Size(35, 13);
             this.label5.TabIndex = 9;
             this.label5.Text = "FILE :";
             // 
@@ -106,17 +111,19 @@
             "OCT",
             "DEC",
             "UNS"});
-            this.choseData.Location = new System.Drawing.Point(156, 119);
+            this.choseData.Location = new System.Drawing.Point(117, 97);
+            this.choseData.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.choseData.Name = "choseData";
-            this.choseData.Size = new System.Drawing.Size(121, 24);
+            this.choseData.Size = new System.Drawing.Size(92, 21);
             this.choseData.TabIndex = 10;
             this.choseData.Text = "HEX";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(194, 259);
+            this.button1.Location = new System.Drawing.Point(235, 210);
+            this.button1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(141, 53);
+            this.button1.Size = new System.Drawing.Size(106, 43);
             this.button1.TabIndex = 11;
             this.button1.Text = "EXPORT";
             this.button1.UseVisualStyleBackColor = true;
@@ -124,60 +131,66 @@
             // 
             // codeName
             // 
-            this.codeName.Location = new System.Drawing.Point(415, 68);
+            this.codeName.Location = new System.Drawing.Point(311, 55);
+            this.codeName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.codeName.Name = "codeName";
-            this.codeName.Size = new System.Drawing.Size(100, 22);
+            this.codeName.Size = new System.Drawing.Size(219, 20);
             this.codeName.TabIndex = 12;
             this.codeName.Text = "code";
             // 
             // dataName
             // 
-            this.dataName.Location = new System.Drawing.Point(415, 117);
+            this.dataName.Location = new System.Drawing.Point(311, 95);
+            this.dataName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataName.Name = "dataName";
-            this.dataName.Size = new System.Drawing.Size(100, 22);
+            this.dataName.Size = new System.Drawing.Size(219, 20);
             this.dataName.TabIndex = 13;
             this.dataName.Text = "data";
             // 
             // code
             // 
             this.code.AutoSize = true;
-            this.code.Location = new System.Drawing.Point(310, 68);
+            this.code.Location = new System.Drawing.Point(232, 55);
+            this.code.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.code.Name = "code";
-            this.code.Size = new System.Drawing.Size(80, 17);
+            this.code.Size = new System.Drawing.Size(61, 13);
             this.code.TabIndex = 14;
             this.code.Text = "Codename:";
             // 
             // stackName
             // 
-            this.stackName.Location = new System.Drawing.Point(415, 175);
+            this.stackName.Location = new System.Drawing.Point(311, 142);
+            this.stackName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.stackName.Name = "stackName";
-            this.stackName.Size = new System.Drawing.Size(100, 22);
+            this.stackName.Size = new System.Drawing.Size(219, 20);
             this.stackName.TabIndex = 15;
             this.stackName.Text = "stack";
             // 
             // data
             // 
             this.data.AutoSize = true;
-            this.data.Location = new System.Drawing.Point(310, 119);
+            this.data.Location = new System.Drawing.Point(232, 97);
+            this.data.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.data.Name = "data";
-            this.data.Size = new System.Drawing.Size(83, 17);
+            this.data.Size = new System.Drawing.Size(64, 13);
             this.data.TabIndex = 16;
             this.data.Text = "DataName :";
             // 
             // stack
             // 
             this.stack.AutoSize = true;
-            this.stack.Location = new System.Drawing.Point(310, 175);
+            this.stack.Location = new System.Drawing.Point(232, 142);
+            this.stack.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.stack.Name = "stack";
-            this.stack.Size = new System.Drawing.Size(86, 17);
+            this.stack.Size = new System.Drawing.Size(67, 13);
             this.stack.TabIndex = 17;
             this.stack.Text = "Stackname :";
             // 
             // exportFile
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(544, 349);
+            this.ClientSize = new System.Drawing.Size(551, 284);
             this.Controls.Add(this.stack);
             this.Controls.Add(this.data);
             this.Controls.Add(this.stackName);
@@ -191,6 +204,7 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.choseFile);
             this.Controls.Add(this.choseAdress);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "exportFile";
             this.Text = "exportFile";
             this.ResumeLayout(false);
