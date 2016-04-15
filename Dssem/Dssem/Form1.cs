@@ -21,7 +21,7 @@ namespace Dssem
         int index = 1;
         int indexstart = 1;
         //file path
-        public static string filePath;
+        public static string filePath= Path.GetDirectoryName(Application.ExecutablePath);
 
         public Form1()
         {
