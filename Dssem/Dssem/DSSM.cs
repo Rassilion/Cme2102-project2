@@ -9,41 +9,39 @@ namespace Dssem
     public class DSSM
 
     {
+        //memory
         public Memory[] codeSegment = new Memory[16];
         public Memory[] dataSegment = new Memory[16];
         public Memory[] stackSegment = new Memory[8];
+        //registers
         public Register PC = new Register("0", 4);
         public Register DR = new Register("0", 4);
         public Register IR = new Register("0", 9);
         public Register AC = new Register("0", 4);
         public Register AR = new Register("0", 4);
-       
         public Register SP = new Register("0", 3);
 
-
+        //flags
         public int E = 0;
         public int SC = 0;
         public int S = 0;
         public string I = "0";
-        public int FGI = 0;
         public int d;
         public int r;
         public int p;
         public int b;
-        public string input="";
-
-
-
-
+        //input
+        public string input = "";
+        //label dic
         public Dictionary<string, string> labelTable = new Dictionary<string, string>();
 
-        //memory , opcode tablosu, register arrayı
-        //programın ana classı
-
+        //create dssm
         public DSSM()
         {
+            //if memory not initiliazed initiliaze
             if (!Memory.initFlag)
                 Memory.initDic();
+            //initiliaze memory cells
             for (int i = 0; i < codeSegment.Length; i++)
             {
                 codeSegment[i] = new Memory();
@@ -57,12 +55,13 @@ namespace Dssem
                 stackSegment[i] = new Memory();
             }
         }
-
+        //initilize pc register
         public void initPC(string value)
         {
             PC.Load(value);
         }
 
+        //increment SC
         public void incSC()
         {
             SC++;
@@ -72,6 +71,7 @@ namespace Dssem
             }
         }
 
+        //get next Instruction
         public string nextInstruction()
         {
             string op = "";
@@ -83,6 +83,7 @@ namespace Dssem
             return op;
         }
 
+        //get next MicroOP
         public string nextMicroOp()
         {
             string op = "";
@@ -103,7 +104,7 @@ namespace Dssem
                 }
                 else if (SC == 2)
                 {
-                    op ="t2: " +T2();
+                    op = "t2: " + T2();
                 }
                 else if (SC == 3)
                 {
@@ -122,6 +123,7 @@ namespace Dssem
 
             return op;
         }
+
 
         public void fetch()
         {
@@ -208,14 +210,14 @@ namespace Dssem
                 else if (b == 7)
                 {
                     //ASHR
-                    E=AC.ASHR();
-                    
+                    E = AC.ASHR();
+
                     op = "ASHR : rB7  AC <- ShiftRight(AC)";
                 }
                 else if (b == 8)
                 {
                     //ASHL
-                   E= AC.ASHL();
+                    E = AC.ASHL();
                     op = "ASHL :rB8 AC <- ShiftLeft(AC)";
                 }
                 else if (b == 9)
@@ -232,9 +234,8 @@ namespace Dssem
                 if (b == 7 || b == 15)
                 {
                     AC.Load(input);
-                    FGI = 0;
                     SC = 0;
-                    op = "INP pB7 | pB15 : AC(0..7) <-INPR FGI <-0";
+                    op = "INP pB7 | pB15 : AC(0..7) <-INPR";
                 }
                 else if (b == 1 || b == 8)
                 {
@@ -271,7 +272,7 @@ namespace Dssem
             else if (d != 0 && I == "1")//indirect
             {
                 AR.Load(dataSegment[AR.getDataInt()].data);
-              
+
                 incSC();
                 op = "Indirect :D0’IT2  :AR <- M[AR]";
             }
@@ -280,7 +281,7 @@ namespace Dssem
                 op = "wait direct";
                 incSC();
             }
-            
+
             return op;
         }
 
@@ -302,7 +303,7 @@ namespace Dssem
                     SC = 0;
                     op = " SP <- SP-1";
                 }
-                
+
             }
             else if (d == 1)
             {
@@ -356,10 +357,10 @@ namespace Dssem
             else if (d == 9)
             {
                 //BSA
-             
+
                 op = "M[SP] <- PC , SC<-0 ";
-               
-                stackSegment[SP.getDataInt()].data =PC.getData();
+
+                stackSegment[SP.getDataInt()].data = PC.getData();
                 incSC();
 
 
@@ -458,8 +459,8 @@ namespace Dssem
             return op;
         }
 
-        }
-
     }
+
+}
 
 

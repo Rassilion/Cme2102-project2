@@ -8,20 +8,23 @@ namespace Dssem
 {
     public static class Util
     {
-        //sayi çevirme fonksiyonları
-        public static string expandBit(string str,int bit)
+        //increase lenght to given lenght add '0'
+        public static string expandBit(string str, int bit)
         {
-            string result="";
-            for (int i = 0; i < bit-str.Length; i++)
+            string result = "";
+            for (int i = 0; i < bit - str.Length; i++)
             {
                 result += "0";
             }
             return result + str;
         }
+        //decrease lenght to gievn lenght
         public static string decreaseBit(string str, int bit)
         {
-            return str.Substring(str.Length -bit,bit);
+            return str.Substring(str.Length - bit, bit);
         }
+
+        //convert number base to given base
         public static string convert(string number, string fromBase, string toBase)
         {
             string result = number;
@@ -81,6 +84,8 @@ namespace Dssem
 
             return result;
         }
+
+        //Convert signed 4 bit numbers
         public static int convertSigned(string bin)
         {
             double result = 0;

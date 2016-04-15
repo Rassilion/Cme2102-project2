@@ -49,7 +49,7 @@ namespace Dssem
             parseCode();
             updateForm();
         }
-
+        //update all GUI elements from dssm
         public void updateForm()
         {
             //clear
@@ -116,7 +116,6 @@ namespace Dssem
 
             //flags
             etext.Text = Util.convert(Convert.ToString(dssm.E), "BIN", showValue);
-            fgitext.Text = Util.convert(Convert.ToString(dssm.FGI), "BIN", showValue);
             stext.Text = Util.convert(Convert.ToString(dssm.S), "BIN", showValue);
             itext.Text = Util.convert(Convert.ToString(dssm.I), "BIN", showValue);
             sctext.Text = Util.convert(Convert.ToString(dssm.SC), "DEC", showValue);
@@ -130,7 +129,7 @@ namespace Dssem
 
 
         }
-
+        //load code file
         public void loadFile()
         {
             //reset code list
@@ -162,22 +161,20 @@ namespace Dssem
                 }
                 dssm.S = 1;
             }
-            catch (ArgumentException e)
+            catch (ArgumentException)
             {
                 MessageBox.Show("Wrong input");
 
             }
-            catch (FileNotFoundException e)
+            catch (FileNotFoundException)
             {
                 MessageBox.Show("File not Found", "ERROR !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-
-
-
         }
+        //parse label and create label dictionary
         private void parseLabel()
-        { //TODO: error check
+        {
             labeltable.Items.Clear();
             int c_index = 0, d_index = -1;
             foreach (var line in codeList.Items)
@@ -231,9 +228,9 @@ namespace Dssem
             }
 
         }
+        //parse code to memory cells
         private void parseCode()
         {
-            //TODO: error check
             int c_index = 0, d_index = -1;
             foreach (var line in codeList.Items)
             {
@@ -248,7 +245,7 @@ namespace Dssem
                     }
                     else if (!splited[i].Contains(','))//opcode
                     {
-                        if (splited[i] == "ORG")
+                        if (splited[i] == "ORG")//get org
                         {
                             if (splited[i + 1].ToUpper() == "C")
                             {
@@ -312,7 +309,7 @@ namespace Dssem
             }
         }
 
-
+        //main parse function
         private void parse(string line)
         {
             opBox.Text = "";
@@ -331,11 +328,7 @@ namespace Dssem
                 }
 
                 else if (splited[i].StartsWith("%"))//comment 
-                {/*
-                    for (int j = i; j < splited.Length; j++)//finish comment
-                    {
-                        commentBox.Text += " " + splited[j];
-                    }*/
+                {
                     break;
                 }
                 else if (splited[i].Length == 3 && !splited[i].Contains(','))//opcode
@@ -352,30 +345,31 @@ namespace Dssem
         }
 
 
-
+        //call next op
         private void button1_Click(object sender, EventArgs e)
         {
             try
             {
                 if (dssm.S == 1)
                 {
+                    //highlight processed code line
                     codeList.SelectedIndex = indexstart + dssm.PC.getDataInt();
                     parse(codeList.Items[index].ToString());
                     mop.Text = dssm.nextInstruction();
                 }
                 else
                 {
-                    //TODO warning
+                    MessageBox.Show("DSSEM stoped, load new code", "Stopped", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
-            catch (ArgumentOutOfRangeException A)
+            catch (ArgumentOutOfRangeException)
             {
                 MessageBox.Show("File error", "ERROR !!", MessageBoxButtons.OK, MessageBoxIcon.Error);
 
             }
             updateForm();
         }
-
+        // update numbers when number mod changed
         private void numbermod_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (numbermod.Text == "BINARY")
@@ -399,7 +393,7 @@ namespace Dssem
                 updateForm();
             }
         }
-
+        //call next micro op
         private void runMicro_Click(object sender, EventArgs e)
         {
             try
@@ -409,12 +403,13 @@ namespace Dssem
                     if (dssm.SC == 0)
                         mop.Text = "";
                     mop.Text += dssm.nextMicroOp() + "\n";
+                    //highlight processed code line
                     codeList.SelectedIndex = indexstart + dssm.PC.getDataInt();
 
                 }
                 else
                 {
-                    //TODO warning
+                    MessageBox.Show("DSSEM stoped, load new code", "Stopped", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
             catch (ArgumentOutOfRangeException)
@@ -424,20 +419,20 @@ namespace Dssem
             }
             updateForm();
         }
-
+        //choose color
         private void baseColorToolStripMenuItem_Click(object sender, EventArgs e)
         {
             colorDialog1.ShowDialog();
             this.BackColor = colorDialog1.Color;
         }
-
+        //open export file form
         private void exportToolStripMenuItem_Click(object sender, EventArgs e)
         {
             exportFile ExportFile = new exportFile(dssm);
             ExportFile.ShowDialog();
 
         }
-
+        //reset code
         private void resetToolStripMenuItem_Click(object sender, EventArgs e)
         {
 

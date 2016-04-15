@@ -44,7 +44,7 @@ namespace Dssem
                 writehexFile("S", stackName.Text);
             }
         }
-
+        //mif file export
         public void FileWriter(string depth, string length, string filename, string memorytype)
         {
 
@@ -110,6 +110,7 @@ namespace Dssem
             }
         }
 
+        //hex file export
         public void writehexFile(string memorytype, string path)
         {
             path = dir + path + ".hex";
@@ -200,9 +201,10 @@ namespace Dssem
                 tw.Close();
                 MessageBox.Show(path + " created");
             }
-            
+
 
         }
+
         public string Complement(string data)
         {
             string result = "";

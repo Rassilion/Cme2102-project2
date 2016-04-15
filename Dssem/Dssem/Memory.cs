@@ -17,7 +17,7 @@ namespace Dssem
         public static Dictionary<string, string> ioReference = new Dictionary<string, string>();
         public static Dictionary<string, string> stackReference = new Dictionary<string, string>();
 
-        public static bool initFlag=false;
+        public static bool initFlag = false;
         static void fullmemoryRef()
         {
             memoryReference.Add("OR", "0001");
@@ -54,6 +54,7 @@ namespace Dssem
             stackReference.Add("SZFull", "0100");
         }
 
+        //initilize dictionaries 
         public static void initDic()
         {
             fullioRef();
@@ -62,27 +63,31 @@ namespace Dssem
             fullstackRef();
             initFlag = true;
         }
-
+        //create memory cell with given opcode and i, data information
         public Memory(string i, string opcode, string data)
         {
+            //memory referance
             if (memoryReference.ContainsKey(opcode))
             {
                 this.i = i;
                 this.opcode = memoryReference[opcode];
                 this.data = data;
             }
+            //register referance
             else if (registerReference.ContainsKey(opcode))
             {
                 this.i = "0";
                 this.opcode = "0000";
                 this.data = registerReference[opcode];
             }
+            //io reference
             else if (ioReference.ContainsKey(opcode))
             {
                 this.i = "1";
                 this.opcode = "0000";
                 this.data = ioReference[opcode];
             }
+            //stack reference
             else if (stackReference.ContainsKey(opcode))
             {
                 this.i = "1";
@@ -97,6 +102,7 @@ namespace Dssem
 
         }
 
+        //empty cell
         public Memory()
         {
             i = "0";
@@ -104,13 +110,10 @@ namespace Dssem
             data = "0000";
         }
 
-        public string ToString()
+
+        override public string ToString()
         {
-            return i +""+ opcode + "" + data;
+            return i + "" + opcode + "" + data;
         }
-
-        
-
-
     }
 }
