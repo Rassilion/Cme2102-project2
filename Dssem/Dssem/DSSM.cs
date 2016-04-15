@@ -259,7 +259,7 @@ namespace Dssem
                 }
                 else if (b == 4 || b == 12)
                 {
-                    if (SP.getDataInt() == 0)
+                    if (SP.getDataInt() == 7)
                     {
                         PC.Increment();
 
@@ -292,9 +292,9 @@ namespace Dssem
                 op = "stack";
                 if (b == 1 || b == 8)
                 {
-                    stackSegment[SP.getDataInt()].data = DR.getData();
+                    stackSegment[SP.getDataInt()].data = PC.getData();
                     SC = 0;
-                    op = " Stack[SP] < -DR";
+                    op = " Stack[SP] <-PC";
                 }
                 else if (b == 2 || b == 10)
                 {
